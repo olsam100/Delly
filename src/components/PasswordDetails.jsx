@@ -218,6 +218,7 @@ const H = styled.div`
             background-color: #ffffff;
             margin-top: 16px;
             color: #073763;
+            padding-left: 16px;
         }
     }
     
@@ -228,7 +229,6 @@ const H = styled.div`
         font-style: normal;
         font-weight: 400;
         font-family: "Graphik";
-        padding-left: 16px;
     }
 
     .acc{

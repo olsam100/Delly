@@ -16,7 +16,7 @@ const App = () => {
         <Route path="/login" element={ <LoginInput /> }/>
         <Route path="/password" element={ <Password /> }/>
         <Route path="/password-input" element={ <PasswordInput /> }/>
-        <Route path="/create-account" element={ <CreateAccount /> } />
+        <Route path="/login/create-account" element={ <CreateAccount /> } />
         <Route path="/create-account-input" element={ <CreateAccountInput /> }/>
         <Route path="/account-success" element={ <AccountSuccess /> }/>
 

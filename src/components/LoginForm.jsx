@@ -110,6 +110,7 @@ const FormStyles = styled.form`
         background-color: #ffffff;
         margin-top: 16px;
         color: #073763;
+        padding-left: 16px;
     }
     
     input::placeholder{
@@ -119,7 +120,6 @@ const FormStyles = styled.form`
         font-style: normal;
         font-weight: 400;
         font-family: "Graphik";
-        padding-left: 16px;
     }
 
     h3{
@@ -154,7 +154,9 @@ const LoginForm = ({name, password}) => {
             </Link>
 
             <Button name="Log in" />
+            <Link to="create-account">
             <p className='acc'>Don’t have an account? <strong>Sign Up</strong> </p>
+            </Link>
 
         </FormStyles>
     )
