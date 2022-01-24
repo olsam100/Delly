@@ -55,6 +55,8 @@ const CreateAccount = () => {
                 name = "Full name"
                 email = "Email Address"
                 welcome = "Organization or Company name"
+                username="Username"
+                password="Password"
             />
         </DivTwo>
     </CreateAccountStyles>

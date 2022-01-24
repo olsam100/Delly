@@ -194,7 +194,7 @@ const CStyles = styled.div`
     }
 `;
 
-const AccountDetails = ({name, email, welcome}) => {
+const AccountDetails = ({name, email, welcome, username, password}) => {
   return (
     <CStyles>
         <h1>Create your <br/> <strong>account</strong></h1>
@@ -203,8 +203,8 @@ const AccountDetails = ({name, email, welcome}) => {
         <input type="email" placeholder={email}/>
         <input type="text" placeholder={welcome}/>
         <div className="buttons">
-            <input className='small-button' type="text" placeholder='Username'/>
-            <input className='small-button' type="password" placeholder='Password'/>
+            <input className='small-button' type="text" placeholder={username}/>
+            <input className='small-button' type="password" placeholder={password}/>
         </div>
         <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
         <div className='but'>

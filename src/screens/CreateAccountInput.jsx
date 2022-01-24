@@ -54,7 +54,9 @@ const CreateAccountInput = () => {
             <AccountDetails 
                 name="John Doe"
                 email="example@xyz.com"
-                welcome="Organisation or Company name"
+                welcome="Product Ideas Co."
+                username="example"
+                password="......"
             />
         </DivTwo>
     </CreateAccountInputStyles>
