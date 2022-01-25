@@ -62,6 +62,9 @@ h3{
 input[type="email" i] {
   padding: 0;
 }
+input[type="text" i] {
+  padding: 0;
+}
 
 button{
   padding: 0;

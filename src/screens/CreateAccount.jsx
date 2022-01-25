@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import AccountDetails from '../components/AccountDetails';
+// import AccountDetails from '../components/AccountDetails';
+import AccountForm from '../components/AccountForm';
 import Easy from '../components/Easy';
 import Footer from '../components/Footer';
 
@@ -51,13 +52,14 @@ const CreateAccount = () => {
             <Footer />
         </DivOne>
         <DivTwo>
-            <AccountDetails 
+            <AccountForm 
                 name = "Full name"
                 email = "Email Address"
                 welcome = "Organization or Company name"
                 username="Username"
                 password="Password"
             />
+
         </DivTwo>
     </CreateAccountStyles>
     )

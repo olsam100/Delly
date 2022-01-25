@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
-// import Input from './Input';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -169,7 +168,6 @@ const H = styled.div`
     @media (min-width: 320px) and (max-width: 480px){
         input{
         border: 1px solid #E5EFFF;
-        height: 46px;
         border-radius: 6px;
         background-color: #ffffff;
         margin-top: 16px;
@@ -178,59 +176,70 @@ const H = styled.div`
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
-        input{
-        border: 1px solid #E5EFFF;
-        height: 46px;
-        border-radius: 6px;
-        background-color: #ffffff;
-        margin-top: 16px;
-        color: #073763;
-        width: 100%;
-        }
+            input {
+              /* max-width: 400px; */
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+          }
+        
     }
     @media (min-width: 721px) and (max-width: 1024px){
-        input{
-        border: 1px solid #E5EFFF;
-        height: 46px;
-        border-radius: 6px;
-        background-color: #ffffff;
-        margin-top: 16px;
-        color: #073763;
-        width: 100%;
-        }
+            input {
+              /* max-width: 400px; */
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+          }
     }
     @media (min-width: 1025px) and (max-width: 1200px){
         input{
-        border: 1px solid #E5EFFF;
-        height: 46px;
-        border-radius: 6px;
-        background-color: #ffffff;
-        margin-top: 16px;
-        color: #073763;
-        width: 100%;
+              max-width: 400px;
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
         }
     }
     @media (min-width: 1201px){
-        input{
-            border: 1px solid #E5EFFF;
-            height: 46px;
-            border-radius: 6px;
-            background-color: #ffffff;
-            margin-top: 16px;
-            color: #073763;
-            padding-left: 16px;
+            input {
+              max-width: 382px;
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
         }
-    }
-    
-    input::placeholder{
-        color: #7F92A4; 
-        opacity: 70%;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        font-family: "Graphik";
-    }
-
+    }  
     .acc{
         padding-top: 16px;
     }
@@ -239,7 +248,47 @@ const H = styled.div`
         text-decoration: none;
     }
 
+    .material-textfield {
+        position: relative;  
+        height: 46px;
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    label {
+          position: absolute;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          font-family: "Graphik";
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: white;
+          color: #7F92A4; 
+          padding: 0 0.3rem;
+          margin: 0 0.5rem;
+          transition: .1s ease-out;
+          transform-origin: left top;
+          pointer-events: none;
+      }
+      
+      input:focus {
+          border-color: #7F92A4;  
+      }
+      input:focus + label {
+          color: #7F92A4;
+          top: 0;
+          transform: translateY(-50%) scale(.9);
+      }
+      input:not(:placeholder-shown) + label {
+          top: 0;
+          transform: translateY(-50%) scale(.9);
+      }
+
 `;
+
+
 
 const PasswordDetails = ({name}) => {
   return (
@@ -247,11 +296,12 @@ const PasswordDetails = ({name}) => {
         <h1>Forgot your <strong>Password</strong></h1>
         <p className="log">Enter your email address and we will send you instructions to reset your password.</p>
         <p className="log"> For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
-        {/* <input type="email" placeholder="Email Address" /> */}
-        <input type="email" placeholder={name}/>
-        {/* <Input name={name}/> */}
+        <div class="material-textfield">
+            <input placeholder=" " type="email" />
+            <label>{name}</label>            
+        </div>
         <Button name="Send Password Instructions"/>
-        <Link to="/login">
+        <Link to="/">
             <p className='acc'><strong>Back to Login</strong> </p>
         </Link>
     </H>

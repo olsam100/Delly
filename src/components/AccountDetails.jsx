@@ -184,7 +184,6 @@ const CStyles = styled.div`
     .buttons{
         display: flex;
         gap: 16px;
-        /* height: 46px; */
         margin-bottom: 16px;
     }
 

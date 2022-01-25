@@ -1,10 +1,9 @@
-import React from 'react'
-import Button from './Button'
-import styled from 'styled-components';
+import React from 'react';
 import { Link } from 'react-router-dom';
-// import Welcome from './Welcome';
+import styled from 'styled-components';
+import Button from './Button';
 
-const FormStyles = styled.form`
+const H = styled.div`
     @media (max-width: 319px){
         width: 80%;
         margin: 0 auto;
@@ -35,7 +34,6 @@ const FormStyles = styled.form`
         display: flex;
         flex-direction: column;
         justify-content: center;
-        flex-wrap: wrap;
         height: 100%;
     }
     @media (min-width: 1025px) and (max-width: 1200px){
@@ -62,7 +60,6 @@ const FormStyles = styled.form`
         font-size: 32px;
         font-style: normal;
         font-weight: 600;
-        /* padding-right: 78px; */
         line-height: 40px;
         color: #526475;
         font-family: "Graphik";
@@ -83,16 +80,81 @@ const FormStyles = styled.form`
     strong{
         color: #00378A;
     }
-    p{
-        color: #7F92A4;
-        font-size: 14px;
-        font-style: normal;
-        font-weight: 400;
-        font-family: "Graphik";
-    }
 
-    .log{
-        margin: 16px 0;
+    @media (min-width: 320px) and (max-width: 480px){
+        p{
+            color: #7F92A4;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: "Graphik";
+            line-height: 24px;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 720px){
+        p{
+            color: #7F92A4;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: "Graphik";
+            line-height: 24px;
+        }
+    }
+    @media (min-width: 721px) and (max-width: 1024px){
+        p{
+            color: #7F92A4;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: "Graphik";
+            line-height: 24px;
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1200px){
+        p{
+            color: #7F92A4;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: "Graphik";
+            line-height: 24px;
+        }
+    }
+    @media (min-width: 1201px){
+        p{
+            color: #7F92A4;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            font-family: "Graphik";
+            line-height: 24px;
+        }
+    }
+    @media (min-width: 320px) and (max-width: 480px){
+        .log{
+            margin: 16px 0;
+        }
+    }
+    @media (min-width: 481px) and (max-width: 720px){
+        .log{
+            margin: 16px 0;
+        }
+    }
+    @media (min-width: 721px) and (max-width: 1024px){
+        .log{
+            margin: 16px 0;
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1200px){
+        .log{
+            margin: 16px 0;
+        }
+    }
+    @media (min-width: 1201px){
+        .log{
+            margin: 16px 0;
+        }
     }
 
     @media (max-width: 319px){
@@ -103,63 +165,157 @@ const FormStyles = styled.form`
             padding-right: 0;
         }
     }
-    input{
+    @media (min-width: 320px) and (max-width: 480px){
+        input{
         border: 1px solid #E5EFFF;
-        height: 44px;
         border-radius: 6px;
         background-color: #ffffff;
         margin-top: 16px;
         color: #073763;
-        padding-left: 16px;
+        width: 100%;
+        }
     }
-    
-    input::placeholder{
-        color: #7F92A4; 
-        opacity: 70%;
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 400;
-        font-family: "Graphik";
+    @media (min-width: 481px) and (max-width: 720px){
+            input {
+              /* max-width: 400px; */
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+          }
+        
+    }
+    @media (min-width: 721px) and (max-width: 1024px){
+            input {
+              /* max-width: 400px; */
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+          }
+    }
+    @media (min-width: 1025px) and (max-width: 1200px){
+        input{
+              max-width: 400px;
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+        }
+    }
+    @media (min-width: 1201px){
+            input {
+              max-width: 382px;
+              width: 100%;
+              font-size: 1rem;
+              outline: none;
+              border: 1px solid #E5EFFF;
+              border-radius: 6px;  
+              color: #073763;
+              transition: 0.1s ease-out;
+              background-color: #ffffff;
+              padding-top: 16px;
+              padding-bottom: 16px;
+              padding-left: 16px;
+        }
+    }  
+    .acc{
+        padding-top: 16px;
     }
 
-    h3{
-        color: #00378A;
-        font-weight: 500;
-        font-size: 14px;
-        font-family: "Graphik";
-    }
-    
     a{
         text-decoration: none;
-        margin: 16px 0;
     }
-    .acc{
+
+    .material-textfield {
+        position: relative;  
+        height: 46px;
         margin-top: 16px;
     }
-
-    .email{
-        height: 46px;
+    .field{
+        margin-bottom: 16px;
     }
+
+    label {
+          position: absolute;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          font-family: "Graphik";
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          background-color: white;
+          color: #7F92A4; 
+          padding: 0 0.3rem;
+          margin: 0 0.5rem;
+          transition: .1s ease-out;
+          transform-origin: left top;
+          pointer-events: none;
+      }
+      
+      input:focus {
+          border-color: #7F92A4;  
+      }
+      input:focus + label {
+          color: #7F92A4;
+          top: 0;
+          transform: translateY(-50%) scale(.9);
+      }
+      input:not(:placeholder-shown) + label {
+          top: 0;
+          transform: translateY(-50%) scale(.9);
+      }
+
 `;
 
+
+
 const LoginForm = ({name, password}) => {
-    return (
-        <FormStyles>
-            <h1>Welcome back to <strong>Delly</strong></h1>
-            <p className='log'>Log in to your account</p>
-            <input type="email" placeholder={name} className='email'/>
-            <input type="password" placeholder={password} />
-            <Link to="/password">
-                <h3>Forgot Password?</h3>
-            </Link>
+  return (
+    <H>
+        <h1>Welcome back to <strong>Delly</strong></h1>
+        <p className="log">Log in to your account.</p>
+        <div class="material-textfield field">
+            <input placeholder=" " type="email" />
+            <label>{name}</label>            
+        </div>
+        <div class="material-textfield">
+            <input placeholder=" " type="password" />
+            <label>{password}</label>            
+        </div>
+        <Link to="/password">
+            <p className='acc'><strong>Forgot Password?</strong> </p>
+        </Link>
+        <Button name="Log In"/>
+        <Link to="login/create-account">
+            <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
+        </Link>
+    </H>
+  );
+};
 
-            <Button name="Log in" />
-            <Link to="create-account">
-            <p className='acc'>Don’t have an account? <strong>Sign Up</strong> </p>
-            </Link>
+export default LoginForm;
 
-        </FormStyles>
-    )
-}
 
-export default LoginForm
