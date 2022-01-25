@@ -12,7 +12,7 @@ const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={ <Login /> }/>
+        <Route path="/" exact element={ <Login /> }/>
         <Route path="/login" element={ <LoginInput /> }/>
         <Route path="/password" element={ <Password /> }/>
         <Route path="/password-input" element={ <PasswordInput /> }/>

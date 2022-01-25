@@ -201,7 +201,7 @@ const SuccessDetails = ({name, email, welcome}) => {
     <SStyles>
         <h1>Account created <br/> <strong>successfully</strong></h1>
         <p className="log">Your account has been created successfully, and a link has been sent to your email address. Please click on the link to activate your account and set up your first campaign.</p> 
-        <Link to="/login">
+        <Link to="/">
             <p className='acc'><strong>Back to login</strong> </p>
         </Link>
     </SStyles>

@@ -221,12 +221,14 @@ const AStyles = styled.div`
         margin: 30px 0;
     }
     .group{
-          display: grid;
-          grid-template-columns: repeat(2, 45%);
-          justify-content: space-between;
+        max-width: 410px;
+        display: grid;
+        width: 100%;
+        grid-template-columns: repeat(2, 45%);
+        justify-content: space-between;
       }
       .small{
-          width: 206px;
+          /* width: 176px; */
       }
 `;
 
@@ -250,11 +252,11 @@ const AccountForm = ({name, email, welcome, username, password}) => {
             </div>
             <div className="group">
                 <div className='material-textfield small'>
-                    <input placeholder=" " type="text"/>
+                    <input placeholder=" " type="text" className='small'/>
                     <label>{username}</label>
                 </div>
                 <div className='material-textfield small'>
-                    <input placeholder=" " type="password"/>
+                    <input placeholder=" " type="password" className='small'/>
                     <label>{password}</label>
                 </div>
             </div>
@@ -262,7 +264,7 @@ const AccountForm = ({name, email, welcome, username, password}) => {
             <div className='but'>
                 <Button name="Sign Up" className="sign" />
             </div>
-            <Link to="/login">
+            <Link to="/">
                 <p className='acc'>Already have an account? <strong>Log In</strong> </p>
             </Link>
        
