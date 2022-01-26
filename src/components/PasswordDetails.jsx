@@ -228,16 +228,15 @@ const H = styled.div`
             input {
               max-width: 382px;
               width: 100%;
-              font-size: 1rem;
+              font-size: 16px;
               outline: none;
               border: 1px solid #E5EFFF;
               border-radius: 6px;  
               color: #073763;
               transition: 0.1s ease-out;
               background-color: #ffffff;
-              padding-top: 16px;
-              padding-bottom: 16px;
               padding-left: 16px;
+              height: 46px;
         }
     }  
     .acc{
@@ -253,6 +252,7 @@ const H = styled.div`
         height: 46px;
         margin-top: 16px;
         margin-bottom: 16px;
+        display: flex;
     }
 
     label {

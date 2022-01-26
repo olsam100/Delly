@@ -86,6 +86,7 @@ const AStyles = styled.div`
     .material-textfield {
         position: relative;  
         margin-top: 24px;
+        display: flex;
     }
 
     .input-fields{
@@ -136,7 +137,6 @@ const AStyles = styled.div`
             width: 100%;    
             height: 46px;
             background-color: #ffffff;
-            margin-top: 16px;
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
@@ -151,7 +151,6 @@ const AStyles = styled.div`
             width: 100%;    
             height: 46px;
             background-color: #ffffff;
-            margin-top: 16px;
         }
     }
     @media (min-width: 721px) and (max-width: 1024px){
@@ -165,7 +164,7 @@ const AStyles = styled.div`
             width: 100%;    
             height: 46px;
             background-color: #ffffff;
-            margin-top: 16px;
+            padding-left: 16px;
         }
     }
     @media (min-width: 1201px){
@@ -232,14 +231,6 @@ const AStyles = styled.div`
       }
 `;
 
-// handleSubmit = (e) => {
-//     e.preventDefault();
-//     console.log("I am a submitted form")
-// };
-// function handleSubmit(e){
-//     e.preventDefault();
-//     console.log("I am a submitted form")
-// }
 
 const handleSubmit = (e) => {
     e.preventDefault();
@@ -275,9 +266,10 @@ const AccountForm = ({name, email, welcome, username, password}) => {
                 </div>
             </div>
             <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
-            <div className='but'>
-                <Button name="Sign Up" className="sign" />
-            </div>
+            <Link to="/account-success">
+                <Button name="Sign Up" />
+            </Link>
+
             <Link to="/">
                 <p className='acc'>Already have an account? <strong>Log In</strong> </p>
             </Link>

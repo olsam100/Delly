@@ -165,21 +165,38 @@ const H = styled.div`
             padding-right: 0;
         }
     }
+    @media (max-width: 319px){
+        input{
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #E5EFFF;
+        border-radius: 6px;  
+        color: #073763;
+        transition: 0.1s ease-out;
+        background-color: #ffffff;
+        padding-left: 16px;
+        height: 46px;
+        }
+    }
     @media (min-width: 320px) and (max-width: 480px){
         input{
-        border: 1px solid #E5EFFF;
-        border-radius: 6px;
-        background-color: #ffffff;
-        margin-top: 16px;
-        color: #073763;
         width: 100%;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #E5EFFF;
+        border-radius: 6px;  
+        color: #073763;
+        transition: 0.1s ease-out;
+        background-color: #ffffff;
+        padding-left: 16px;
+        height: 46px;
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
             input {
               /* max-width: 400px; */
               width: 100%;
-              font-size: 1rem;
+              font-size: 16px;
               outline: none;
               border: 1px solid #E5EFFF;
               border-radius: 6px;  
@@ -194,7 +211,7 @@ const H = styled.div`
     }
     @media (min-width: 721px) and (max-width: 1024px){
             input {
-              /* max-width: 400px; */
+              /* max-width: 382px; */
               width: 100%;
               font-size: 1rem;
               outline: none;
@@ -210,7 +227,7 @@ const H = styled.div`
     }
     @media (min-width: 1025px) and (max-width: 1200px){
         input{
-              max-width: 400px;
+              max-width: 382px;
               width: 100%;
               font-size: 1rem;
               outline: none;
@@ -228,16 +245,15 @@ const H = styled.div`
             input {
               max-width: 382px;
               width: 100%;
-              font-size: 1rem;
+              font-size: 16px;
               outline: none;
               border: 1px solid #E5EFFF;
               border-radius: 6px;  
               color: #073763;
               transition: 0.1s ease-out;
               background-color: #ffffff;
-              padding-top: 16px;
-              padding-bottom: 16px;
               padding-left: 16px;
+              height: 46px;
         }
     }  
     .acc{
@@ -250,12 +266,13 @@ const H = styled.div`
 
     .material-textfield {
         position: relative;  
-        height: 46px;
+        height: 48px;
         margin-top: 16px;
+        display: flex;
     }
     .field{
         /* margin-bottom: 16px; */
-        /* margin-top: 16px; */
+        margin-top: 24px;
     }
 
     label {
@@ -289,9 +306,6 @@ const H = styled.div`
           transform: translateY(-50%) scale(.9);
       }
 
-      .word{
-          padding-top: 16px;
-      }
 
 `;
 
@@ -302,11 +316,11 @@ const LoginForm = ({name, password}) => {
         <form>
             <h1>Welcome back to <strong>Delly</strong></h1>
             <p className="log">Log in to your account.</p>
-            <div className="material-textfield field">
+            <div className="material-textfield">
                 <input placeholder=" " type="email" />
                 <label>{name}</label>            
             </div>
-            <div className="material-textfield word">
+            <div className="material-textfield field">
                 <input placeholder=" " type="password" />
                 <label>{password}</label>            
             </div>
@@ -314,7 +328,7 @@ const LoginForm = ({name, password}) => {
                 <p className='acc'><strong>Forgot Password?</strong> </p>
             </Link>
             <Button name="Log In"/>
-            <Link to="login/create-account">
+            <Link to="/create-account">
                 <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
             </Link>
         </form>

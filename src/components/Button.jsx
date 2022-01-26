@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Butt = styled.button`
@@ -18,9 +17,7 @@ const Butt = styled.button`
 const Button = ({name}) => {
     return (
         <div>
-            <Link to="/">
-                <Butt>{name}</Butt>
-            </Link>
+            <Butt>{name}</Butt>
         </div>
     )
 }
