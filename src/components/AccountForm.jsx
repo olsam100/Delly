@@ -206,10 +206,10 @@ const AStyles = styled.div`
     }
             
     input:focus {
-        border-color: #6200EE;  
+        border-color: #7F92A4;  
     }
     input:focus + label {
-        color: #6200EE;
+        color: #7F92A4;
         top: 0;
         transform: translateY(-50%) scale(.9);
     }
@@ -232,10 +232,24 @@ const AStyles = styled.div`
       }
 `;
 
+// handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log("I am a submitted form")
+// };
+// function handleSubmit(e){
+//     e.preventDefault();
+//     console.log("I am a submitted form")
+// }
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log('I am a submitted form')
+}
+
 const AccountForm = ({name, email, welcome, username, password}) => {
   return (
   <AStyles>
-      <form>
+      <form onSubmit={handleSubmit}>
             <h1>Create your <br/> <strong>account</strong></h1>
             <p className="log">Enter the information below to create your account.</p>
             <div className="material-textfield">

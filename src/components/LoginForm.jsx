@@ -290,32 +290,36 @@ const H = styled.div`
 
 `;
 
-
+// handleClick () {
+//     console.log('I am clicked')
+// }
 
 const LoginForm = ({name, password}) => {
   return (
     <H>
-        <h1>Welcome back to <strong>Delly</strong></h1>
-        <p className="log">Log in to your account.</p>
-        <div class="material-textfield field">
-            <input placeholder=" " type="email" />
-            <label>{name}</label>            
-        </div>
-        <div class="material-textfield">
-            <input placeholder=" " type="password" />
-            <label>{password}</label>            
-        </div>
-        <Link to="/password">
-            <p className='acc'><strong>Forgot Password?</strong> </p>
-        </Link>
-        <Button name="Log In"/>
-        <Link to="login/create-account">
-            <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
-        </Link>
+        <form>
+            <h1>Welcome back to <strong>Delly</strong></h1>
+            <p className="log">Log in to your account.</p>
+            <div className="material-textfield field">
+                <input placeholder=" " type="email" />
+                <label>{name}</label>            
+            </div>
+            <div className="material-textfield">
+                <input placeholder=" " type="password" />
+                <label>{password}</label>            
+            </div>
+            <Link to="/password">
+                <p className='acc'><strong>Forgot Password?</strong> </p>
+            </Link>
+            <Button name="Log In"/>
+            <Link to="login/create-account">
+                <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
+            </Link>
+        </form>
     </H>
   );
 };
 
 export default LoginForm;
-
+ 
 

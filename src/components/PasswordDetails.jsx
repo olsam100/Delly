@@ -296,7 +296,7 @@ const PasswordDetails = ({name}) => {
         <h1>Forgot your <strong>Password</strong></h1>
         <p className="log">Enter your email address and we will send you instructions to reset your password.</p>
         <p className="log"> For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
-        <div class="material-textfield">
+        <div className="material-textfield">
             <input placeholder=" " type="email" />
             <label>{name}</label>            
         </div>
