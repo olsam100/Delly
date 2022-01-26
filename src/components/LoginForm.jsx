@@ -254,7 +254,8 @@ const H = styled.div`
         margin-top: 16px;
     }
     .field{
-        margin-bottom: 16px;
+        /* margin-bottom: 16px; */
+        /* margin-top: 16px; */
     }
 
     label {
@@ -288,11 +289,12 @@ const H = styled.div`
           transform: translateY(-50%) scale(.9);
       }
 
+      .word{
+          padding-top: 16px;
+      }
+
 `;
 
-// handleClick () {
-//     console.log('I am clicked')
-// }
 
 const LoginForm = ({name, password}) => {
   return (
@@ -304,7 +306,7 @@ const LoginForm = ({name, password}) => {
                 <input placeholder=" " type="email" />
                 <label>{name}</label>            
             </div>
-            <div className="material-textfield">
+            <div className="material-textfield word">
                 <input placeholder=" " type="password" />
                 <label>{password}</label>            
             </div>
