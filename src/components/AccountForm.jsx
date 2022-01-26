@@ -222,12 +222,13 @@ const AStyles = styled.div`
     .group{
         max-width: 410px;
         display: grid;
-        width: 100%;
-        grid-template-columns: repeat(2, 45%);
+        grid-template-columns: repeat(2, 50%);
         justify-content: space-between;
+        gap: 16px;
       }
       .small{
           /* width: 176px; */
+          height: 44px;
       }
 `;
 
@@ -256,11 +257,11 @@ const AccountForm = ({name, email, welcome, username, password}) => {
                 <label>{welcome}</label>
             </div>
             <div className="group">
-                <div className='material-textfield small'>
+                <div className='material-textfield'>
                     <input placeholder=" " type="text" className='small'/>
                     <label>{username}</label>
                 </div>
-                <div className='material-textfield small'>
+                <div className='material-textfield'>
                     <input placeholder=" " type="password" className='small'/>
                     <label>{password}</label>
                 </div>

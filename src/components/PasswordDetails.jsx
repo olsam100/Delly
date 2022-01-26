@@ -165,14 +165,32 @@ const H = styled.div`
             padding-right: 0;
         }
     }
+    @media (max-width: 319px){
+        input{
+        width: 100%;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #E5EFFF;
+        border-radius: 6px;  
+        color: #073763;
+        transition: 0.1s ease-out;
+        background-color: #ffffff;
+        padding-left: 16px;
+        height: 46px;
+        }
+    }
     @media (min-width: 320px) and (max-width: 480px){
         input{
-        border: 1px solid #E5EFFF;
-        border-radius: 6px;
-        background-color: #ffffff;
-        margin-top: 16px;
-        color: #073763;
         width: 100%;
+        font-size: 16px;
+        outline: none;
+        border: 1px solid #E5EFFF;
+        border-radius: 6px;  
+        color: #073763;
+        transition: 0.1s ease-out;
+        background-color: #ffffff;
+        padding-left: 16px;
+        height: 46px;
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
