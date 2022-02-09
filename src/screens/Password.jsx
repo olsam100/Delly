@@ -58,7 +58,6 @@ const Password = () => {
             <DivTwo>
                 <PasswordDetails 
                 name="Email Address"
-                error={''}
                 />
             </DivTwo>
         </PasswordStyles>
