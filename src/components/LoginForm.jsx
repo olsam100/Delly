@@ -3,8 +3,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
-
-// import Joi from 'joi-browser';
+import Joi from 'joi-browser';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -310,26 +309,35 @@ const H = styled.div`
       }
 `;
 
-// const schema = {
-//     name: Joi.string()
-//         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-//         .required(),
-//     password: Joi.string()
-//         .required()
-// }
-
-// validate = () => {
-//     Joi.validate(state, schema)
-// }
-
 
 const LoginForm = ({name, password}) => {
+    const schema = {
+        name: Joi.string()
+            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+            .required()
+            .label('Email'), 
+        password: Joi.string()
+            .required()
+            .label('Password')
+    }
+    
+     const validate = () => {
+        const options = { abortEarly: false }
+        const result = Joi.validate(mail, word, schema, options);
+        if(!result.error) return null
+
+        const errors = {}
+        for(let item of result.error.details)
+        errors[item.path[0]] = item.message;
+        return errors;        
+    }
 
     const [mail, setEmail] = useState('')
     const [word, setWord] = useState('')
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        validate(); 
         let details = {mail, word}
         let result = fetch('https://delly-app.herokuapp.com/user/login', {
             method: 'POST',

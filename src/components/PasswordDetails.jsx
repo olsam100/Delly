@@ -303,15 +303,24 @@ const H = styled.div`
           top: 0;
           transform: translateY(-50%) scale(.9);
       }
-
+    .alert{
+        background-color: #FAD173;
+    }
 `;
 
 
-const PasswordDetails = ({name}) => {
+const PasswordDetails = ({name, error}) => {
     const [email, setEmail] = useState('')
+
+    const validate = () => {
+        const errors = {};
+        if(email.trim() === '' )
+        errors.email = 'Email is required..'
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
+        validate();
         console.log('I am submitted');
     }
     
@@ -329,7 +338,8 @@ const PasswordDetails = ({name}) => {
                     onChange={e => setEmail(e.target.value)}
                     name='name'
                 />
-                <label>{name}</label>            
+                <label>{name}</label>  
+                {error && <div className="alert">{error}</div>}          
             </div>
             <Button name="Send Password Instructions" />
         </form>
