@@ -310,45 +310,30 @@ const H = styled.div`
 `;
 
 
+
 const LoginForm = ({name, password}) => {
-    const schema = {
-        name: Joi.string()
-            .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
-            .required()
-            .label('Email'), 
-        password: Joi.string()
-            .required()
-            .label('Password')
-    }
     
-     const validate = () => {
-        const options = { abortEarly: false }
-        const result = Joi.validate(mail, word, schema, options);
-        if(!result.error) return null
-
-        const errors = {}
-        for(let item of result.error.details)
-        errors[item.path[0]] = item.message;
-        return errors;        
-    }
-
     const [mail, setEmail] = useState('')
     const [word, setWord] = useState('')
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        validate(); 
-        let details = {mail, word}
-        let result = fetch('https://delly-app.herokuapp.com/user/login', {
-            method: 'POST',
-            headers: {
-                    "Content-Type": "application/json",
-                    "Accept": "application/json"
-                },
-            body: JSON.stringify(details) 
-            })
-        result = result.json()
+    let details = {mail, word}
+    async function loginUser() {
+        let result = await fetch('https://delly-app.herokuapp.com/user/login', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(details)
+        })
+        result = await result.json()
         localStorage.setItem('user-info', JSON.stringify(result))
+    }
+    
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        await loginUser(details);     
     }
     
      

@@ -244,22 +244,24 @@ const AccountForm = ({name, email, welcome, username, password}) => {
     const [come, setWelcome] = useState('')
     const [user, setUser] = useState('')
     const [word, setWord] = useState('')
-   
-
-    let items = {nam, mail, come, user, word}
-
-     const handleSubmit = e => {
-        e.preventDefault()
-        let result = fetch('https://delly-app.herokuapp.com/user/register', {
-        method: 'POST',
-        headers: {
-            "Content-Type": "application/json",
+    
+    let details = {nam, mail, come, user, word}
+    async function registerUser() {
+        let result = await fetch('https://delly-app.herokuapp.com/user/register', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
             "Accept": "application/json"
-        },
-        body: JSON.stringify(items) 
-    })
-    result = result.json()
-    localStorage.setItem('user-info', JSON.stringify(result))
+          },
+          body: JSON.stringify(details)
+        })
+        result = await result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
+    }
+   
+     const handleSubmit = async (e) => {
+        e.preventDefault()
+        await registerUser(details)
     }
   return (
     <AStyles>
