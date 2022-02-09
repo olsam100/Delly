@@ -312,15 +312,10 @@ const H = styled.div`
 const PasswordDetails = ({name, error}) => {
     const [email, setEmail] = useState('')
 
-    const validate = () => {
-        const errors = {};
-        if(email.trim() === '' )
-        errors.email = 'Email is required..'
-    }
+    
 
     const handleSubmit = e => {
         e.preventDefault();
-        validate();
         console.log('I am submitted');
     }
     
