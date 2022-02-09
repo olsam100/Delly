@@ -1,7 +1,10 @@
-import React from 'react';
+// import axios from 'axios';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
+
+// import Joi from 'joi-browser';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -305,29 +308,75 @@ const H = styled.div`
           top: 0;
           transform: translateY(-50%) scale(.9);
       }
-
-
 `;
+
+// const schema = {
+//     name: Joi.string()
+//         .email({ minDomainSegments: 2, tlds: { allow: ['com', 'net'] } })
+//         .required(),
+//     password: Joi.string()
+//         .required()
+// }
+
+// validate = () => {
+//     Joi.validate(state, schema)
+// }
 
 
 const LoginForm = ({name, password}) => {
+
+    const [mail, setEmail] = useState('')
+    const [word, setWord] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        let details = {mail, word}
+        let result = fetch('https://delly-app.herokuapp.com/user/login', {
+            method: 'POST',
+            headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                },
+            body: JSON.stringify(details) 
+            })
+        result = result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
+    }
+    
+     
   return (
     <H>
-        <form>
-            <h1>Welcome back to <strong>Delly</strong></h1>
-            <p className="log">Log in to your account.</p>
+        <h1>Welcome back to <strong>Delly</strong></h1>
+        <p className="log">Log in to your account.</p>
+        <form onSubmit={handleSubmit}>
             <div className="material-textfield">
-                <input placeholder=" " type="email" />
+                <input 
+                    placeholder=" " 
+                    type="email" 
+                    onChange={e => setEmail(e.target.value)}
+                    value={mail}
+                    name='name'
+                    autoComplete='true'
+                    required
+                />
                 <label>{name}</label>            
             </div>
             <div className="material-textfield field">
-                <input placeholder=" " type="password" />
+                <input 
+                    placeholder=" " 
+                    type="password" 
+                    onChange={e => setWord(e.target.value)}
+                    value={word}
+                    name='password'
+                    required
+                    autoComplete='current-password"'
+                />
                 <label>{password}</label>            
             </div>
             <Link to="/password">
                 <p className='acc'><strong>Forgot Password?</strong> </p>
             </Link>
-            <Button name="Log In"/>
+            <Button name="Log In" type="submit" post/>
             <Link to="/create-account">
                 <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
             </Link>

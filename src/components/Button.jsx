@@ -16,10 +16,11 @@ const Butt = styled.button`
 
 const Button = ({name}) => {
     return (
-        <div>
+        <>
             <Butt>{name}</Butt>
-        </div>
+        </>
     )
 }
 
 export default Button
+

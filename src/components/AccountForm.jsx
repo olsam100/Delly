@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { Link } from 'react-router-dom';
@@ -233,50 +233,105 @@ const AStyles = styled.div`
 `;
 
 
-const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log('I am a submitted form')
-}
+
+
+ 
 
 const AccountForm = ({name, email, welcome, username, password}) => {
-  return (
-  <AStyles>
-      <form onSubmit={handleSubmit}>
-            <h1>Create your <br/> <strong>account</strong></h1>
-            <p className="log">Enter the information below to create your account.</p>
-            <div className="material-textfield">
-                <input placeholder=" " type="text"/>
-                <label>{name}</label>
-            </div>
-            <div className="material-textfield">
-                <input placeholder=" " type="email"/>
-                <label>{email}</label>
-            </div>
-            <div className="material-textfield">
-                <input placeholder=" " type="text"/>
-                <label>{welcome}</label>
-            </div>
-            <div className="group">
-                <div className='material-textfield'>
-                    <input placeholder=" " type="text" className='small'/>
-                    <label>{username}</label>
-                </div>
-                <div className='material-textfield'>
-                    <input placeholder=" " type="password" className='small'/>
-                    <label>{password}</label>
-                </div>
-            </div>
-            <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
-            <Link to="/account-success">
-                <Button name="Sign Up" />
-            </Link>
+    
+    const [nam, setName] = useState('')
+    const [mail, setEmail] = useState('')
+    const [come, setWelcome] = useState('')
+    const [user, setUser] = useState('')
+    const [word, setWord] = useState('')
+   
 
-            <Link to="/">
-                <p className='acc'>Already have an account? <strong>Log In</strong> </p>
-            </Link>
-       
-      </form>
-  </AStyles>);
+    let items = {nam, mail, come, user, word}
+
+     const handleSubmit = e => {
+        e.preventDefault()
+        let result = fetch('https://delly-app.herokuapp.com/user/register', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+        },
+        body: JSON.stringify(items) 
+    })
+    result = result.json()
+    localStorage.setItem('user-info', JSON.stringify(result))
+    }
+  return (
+    <AStyles>
+    <form onSubmit={handleSubmit}>
+          <h1>Create your <br/> <strong>account</strong></h1>
+          <p className="log">Enter the information below to create your account.</p>
+          <div className="material-textfield">
+              <input 
+                  placeholder=" " 
+                  type="text"
+                  value={nam} 
+                  onChange={(e) => setName(e.target.value)}
+                  name='Full name'
+                  autoComplete=''
+              />
+            <label>{name}</label>
+          </div>
+          <div className="material-textfield">
+              <input 
+                  placeholder=" " 
+                  type="email"
+                  value={mail} 
+                  onChange={(e) => setEmail(e.target.value)}
+                  name='Email'
+              />
+              <label>{email}</label>
+          </div>
+          <div className="material-textfield">
+              <input 
+                  placeholder=" " 
+                  type="text"
+                  value={come} 
+                  onChange={(e) => setWelcome(e.target.value)}
+                  name='Welcome'
+              />
+              <label>{welcome}</label>
+          </div>
+          <div className="group">
+              <div className='material-textfield'>
+                  <input 
+                      placeholder=" " 
+                      type="text" 
+                      className='small'
+                      value={user} 
+                      onChange={(e) => setUser(e.target.value)}
+                      name='Username'
+                  />
+                  <label>{username}</label>
+              </div>
+              <div className='material-textfield'>
+                  <input 
+                      placeholder=" " 
+                      type="password" 
+                      className='small'
+                      value={word} 
+                      onChange={(e) => setWord(e.target.value)}
+                      name='Password'
+                  />
+                  <label>{password}</label>
+              </div>
+          </div>
+          <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
+          
+          <Button name="Sign Up" />
+
+          <Link to="/">
+              <p className='acc'>Already have an account? <strong>Log In</strong> </p>
+          </Link>
+     
+    </form>
+</AStyles>);
 };
 
 export default AccountForm;
+

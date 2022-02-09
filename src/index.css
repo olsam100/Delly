@@ -77,3 +77,9 @@ input[type="password" i] {
   -webkit-text-security: disc !important;
   padding: 0;
 }
+
+input:-internal-autofill-selected {
+
+  background-color: -internal-light-dark(rgb(232, 240, 254), rgba(70, 90, 126, 0.4)) ;
+}
+
