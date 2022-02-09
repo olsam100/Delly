@@ -1,4 +1,3 @@
-import { validate } from 'joi-browser';
 import React from 'react';
 import styled from 'styled-components';
 import Easy from '../components/Easy';
