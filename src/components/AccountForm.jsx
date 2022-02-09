@@ -259,7 +259,7 @@ const AccountForm = ({name, email, welcome, username, password}) => {
         localStorage.setItem('user-info', JSON.stringify(result))
     }
    
-     const handleSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
         await registerUser(details)
     }
