@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
 import { Link } from 'react-router-dom';
+import Input from './Input';
 
 const AStyles = styled.div`
      @media (max-width: 319px){
@@ -235,17 +236,17 @@ const AStyles = styled.div`
 
 
 
- 
+ // {name, email, welcome, username, password}
 
-const AccountForm = ({name, email, welcome, username, password}) => {
+const RegisterForm = () => {
     
-    const [nam, setName] = useState('')
-    const [mail, setEmail] = useState('')
-    const [come, setWelcome] = useState('')
-    const [user, setUser] = useState('')
-    const [word, setWord] = useState('')
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [welcome, setWelcome] = useState('')
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     
-    let details = {nam, mail, come, user, word}
+    let details = {name, email, welcome, username, password}
     async function registerUser() {
         let result = await fetch('https://delly-app.herokuapp.com/user/register', {
           method: 'POST',
@@ -268,72 +269,54 @@ const AccountForm = ({name, email, welcome, username, password}) => {
     <form onSubmit={handleSubmit}>
           <h1>Create your <br/> <strong>account</strong></h1>
           <p className="log">Enter the information below to create your account.</p>
-          <div className="material-textfield">
-              <input 
-                  placeholder=" " 
-                  type="text"
-                  value={nam} 
-                  onChange={(e) => setName(e.target.value)}
-                  name='Full name'
-                  autoComplete=''
-              />
-            <label>{name}</label>
-          </div>
-          <div className="material-textfield">
-              <input 
-                  placeholder=" " 
-                  type="email"
-                  value={mail} 
-                  onChange={(e) => setEmail(e.target.value)}
-                  name='Email'
-              />
-              <label>{email}</label>
-          </div>
-          <div className="material-textfield">
-              <input 
-                  placeholder=" " 
-                  type="text"
-                  value={come} 
-                  onChange={(e) => setWelcome(e.target.value)}
-                  name='Welcome'
-              />
-              <label>{welcome}</label>
-          </div>
+          <Input 
+             onChange={e => setName(e.target.value)}
+             value={name}
+             name='Fullname'
+             autoComplete='true'
+             label='Full name'
+          />
+          <Input 
+             onChange={e => setEmail(e.target.value)}
+             value={email}
+             name='Email Address'
+             autoComplete='true'
+             label='Email Address'
+             type='email'
+          />
+          <Input 
+             onChange={e => setWelcome(e.target.value)}
+             value={welcome}
+             name='Welcome'
+             autoComplete='true'
+             label='Organization or Company name'
+          />
           <div className="group">
-              <div className='material-textfield'>
-                  <input 
-                      placeholder=" " 
-                      type="text" 
-                      className='small'
-                      value={user} 
-                      onChange={(e) => setUser(e.target.value)}
-                      name='Username'
-                  />
-                  <label>{username}</label>
-              </div>
-              <div className='material-textfield'>
-                  <input 
-                      placeholder=" " 
-                      type="password" 
-                      className='small'
-                      value={word} 
-                      onChange={(e) => setWord(e.target.value)}
-                      name='Password'
-                  />
-                  <label>{password}</label>
-              </div>
+            <Input 
+                onChange={e => setUsername(e.target.value)}
+                value={username}
+                name='Username'
+                autoComplete='true'
+                label='Username'
+            />
+            <Input 
+                onChange={e => setPassword(e.target.value)}
+                value={password}
+                name='Password'
+                autoComplete='new-password'
+                label='Password'
+                type='password'
+            />
           </div>
           <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
-          
           <Button name="Sign Up" />
-
-          <Link to="/">
-              <p className='acc'>Already have an account? <strong>Log In</strong> </p>
-          </Link>
+          <p className='acc'>
+            <Link to="/">Already have an account? <strong>Log In</strong> </Link>
+          </p>
      
     </form>
 </AStyles>);
 };
 
-export default AccountForm;
+export default RegisterForm;
 

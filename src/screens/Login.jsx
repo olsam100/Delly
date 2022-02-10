@@ -60,10 +60,7 @@ const Login = () => {
                 <Footer />
             </DivOne>
             <DivTwo>
-                <LoginForm 
-                name="Email Address"
-                password="Password"
-                />
+                <LoginForm />
             </DivTwo>
         </LoginStyles>
     )

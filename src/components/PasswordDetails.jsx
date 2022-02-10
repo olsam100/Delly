@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
+import Input from './Input';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -325,22 +326,21 @@ const PasswordDetails = ({name, error}) => {
         <p className="log">Enter your email address and we will send you instructions to reset your password.</p>
         <p className="log"> For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
         <form onSubmit={handleSubmit}>
-            <div className="material-textfield">
-                <input 
-                    placeholder=" " 
+                <Input 
                     type="email" 
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                     name='name'
+                    autoComplete='true'
+                    label='Email Address'
                 />
-                <label>{name}</label>  
-                {error && <div className="alert">{error}</div>}          
-            </div>
             <Button name="Send Password Instructions" />
         </form>
-        <Link to="/">
-            <p className='acc'><strong>Back to Login</strong> </p>
-        </Link>
+        <p className='acc'>
+            <Link to="/">
+                <strong>Back to Login</strong> 
+            </Link>
+        </p>
     </H>
   );
 };

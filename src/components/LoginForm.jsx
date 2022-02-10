@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
-import Joi from 'joi-browser';
+import Input from './Input';
+// import Joi from 'joi-browser';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -311,7 +312,7 @@ const H = styled.div`
 
 
 
-const LoginForm = ({name, password}) => {
+const LoginForm = () => {
     
     const [mail, setEmail] = useState('')
     const [word, setWord] = useState('')
@@ -330,49 +331,46 @@ const LoginForm = ({name, password}) => {
         localStorage.setItem('user-info', JSON.stringify(result))
     }
     
-
     const handleSubmit = async (e) => {
         e.preventDefault();
         await loginUser(details);     
     }
-    
      
   return (
     <H>
         <h1>Welcome back to <strong>Delly</strong></h1>
         <p className="log">Log in to your account.</p>
         <form onSubmit={handleSubmit}>
-            <div className="material-textfield">
-                <input 
-                    placeholder=" " 
-                    type="email" 
-                    onChange={e => setEmail(e.target.value)}
-                    value={mail}
-                    name='name'
-                    autoComplete='true'
-                    required
-                />
-                <label>{name}</label>            
-            </div>
-            <div className="material-textfield field">
-                <input 
-                    placeholder=" " 
-                    type="password" 
-                    onChange={e => setWord(e.target.value)}
-                    value={word}
-                    name='password'
-                    required
-                    autoComplete='current-password"'
-                />
-                <label>{password}</label>            
-            </div>
-            <Link to="/password">
-                <p className='acc'><strong>Forgot Password?</strong> </p>
-            </Link>
+            <Input  
+                onChange={e => setEmail(e.target.value)}
+                value={mail}
+                name='Email'
+                autoComplete='true'
+                label='Email Address'
+            />
+            <Input 
+                type='password'  
+                onChange={e => setWord(e.target.value)}
+                value={word}
+                name='Password'
+                autoComplete='current-password'
+                label='Password'
+            />
+           
+            <p className='acc'>
+                <Link to="/password">
+                    <strong>Forgot Password?
+                    </strong> 
+                </Link>
+            </p>
+
             <Button name="Log In" type="submit" post/>
-            <Link to="/create-account">
-                <p className='acc'>Don't have an account? <strong>Sign Up</strong> </p>
-            </Link>
+            <p className='acc'>
+                <Link to="/create-account">
+                    Don't have an account? 
+                    <strong> Sign Up</strong> 
+                </Link>
+            </p>
         </form>
     </H>
   );
