@@ -1,3 +1,4 @@
+// import { validate } from 'joi-browser';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
@@ -310,14 +311,25 @@ const H = styled.div`
 `;
 
 
-const PasswordDetails = ({name, error}) => {
+const PasswordDetails = () => {
     const [email, setEmail] = useState('')
+    // const [errors, setError] = useState({})
 
-    
+    // const handleError = () => setError(errors);
+
+    const validate = () => {
+        const errors = {}
+        if(email.trim() === '' ) 
+            errors.email = 'Email is required'
+        return { email: 'Email is required' };
+    }
 
     const handleSubmit = e => {
         e.preventDefault();
-        console.log('I am submitted');
+        const errors = validate();
+        // handleError({errors});
+        if(errors) return;
+        // console.log('I am submitted');
     }
     
   return (

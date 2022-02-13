@@ -1,14 +1,13 @@
 import React from 'react';
-
-const Input = ({ name, label, type='text', onChange }) => {
+ 
+const Input = ({ label, type='text', ...rest}) => {
   return (
     <div className="material-textfield field">
             <input 
+                {...rest}
                 placeholder=" " 
-                name={name}
-                required 
                 type={type}
-                onChange={onChange}
+                required 
             />
             <label>{label}</label>            
     </div>

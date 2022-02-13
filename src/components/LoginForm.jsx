@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
+import { login } from '../services/authService'
 // import Joi from 'joi-browser';
 
 const H = styled.div`
@@ -316,6 +317,7 @@ const LoginForm = () => {
     
     const [mail, setEmail] = useState('')
     const [word, setWord] = useState('')
+    // const [errors, catchError] = useState({})
 
     let details = {mail, word}
     async function loginUser() {
@@ -333,7 +335,17 @@ const LoginForm = () => {
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await loginUser(details);     
+        try {
+            await loginUser(details); 
+           const { jwt } = await login(mail, word);
+           localStorage.setItem('token', jwt);
+           this.props.history.push('/'); 
+           console.log(jwt)   
+        } catch (ex) {
+            if(ex.response && ex.response.status === 400) {
+               
+            }
+        }
     }
      
   return (

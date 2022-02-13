@@ -233,11 +233,6 @@ const AStyles = styled.div`
       }
 `;
 
-
-
-
- // {name, email, welcome, username, password}
-
 const RegisterForm = () => {
     
     const [name, setName] = useState('')
@@ -266,32 +261,32 @@ const RegisterForm = () => {
     }
   return (
     <AStyles>
-    <form onSubmit={handleSubmit}>
-          <h1>Create your <br/> <strong>account</strong></h1>
-          <p className="log">Enter the information below to create your account.</p>
-          <Input 
-             onChange={e => setName(e.target.value)}
-             value={name}
-             name='Fullname'
-             autoComplete='true'
-             label='Full name'
-          />
-          <Input 
-             onChange={e => setEmail(e.target.value)}
-             value={email}
-             name='Email Address'
-             autoComplete='true'
-             label='Email Address'
-             type='email'
-          />
-          <Input 
-             onChange={e => setWelcome(e.target.value)}
-             value={welcome}
-             name='Welcome'
-             autoComplete='true'
-             label='Organization or Company name'
-          />
-          <div className="group">
+        <form onSubmit={handleSubmit}>
+            <h1>Create your <br/> <strong>account</strong></h1>
+            <p className="log">Enter the information below to create your account.</p>
+            <Input 
+                onChange={e => setName(e.target.value)}
+                value={name}
+                name='Fullname'
+                autoComplete='true'
+                label='Full name'
+            />
+            <Input 
+                onChange={e => setEmail(e.target.value)}
+                value={email}
+                name='Email Address'
+                autoComplete='true'
+                label='Email Address'
+                type='email'
+            />
+            <Input 
+                onChange={e => setWelcome(e.target.value)}
+                value={welcome}
+                name='Welcome'
+                autoComplete='true'
+                label='Organization or Company name'
+            />
+            <div className="group">
             <Input 
                 onChange={e => setUsername(e.target.value)}
                 value={username}
@@ -307,15 +302,15 @@ const RegisterForm = () => {
                 label='Password'
                 type='password'
             />
-          </div>
-          <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
-          <Button name="Sign Up" />
-          <p className='acc'>
+            </div>
+            <p className="clicks">By Clicking Sign Up, you agree to accept our <strong className='terms'>Terms and Conditions</strong> and <strong className='terms'> Privacy Policy.</strong></p>
+            <Button name="Sign Up" />
+            <p className='acc'>
             <Link to="/">Already have an account? <strong>Log In</strong> </Link>
-          </p>
-     
-    </form>
-</AStyles>);
+            </p>
+        
+        </form>
+    </AStyles>);
 };
 
 export default RegisterForm;
