@@ -30,11 +30,12 @@ const AStyles = styled.div`
         padding-top: 60px;
     }
     @media (min-width: 721px) and (max-width: 1024px){
-        width: 80%;
+        /* width: 80%; */
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         height: 100%;
     }
     @media (min-width: 1025px) and (max-width: 1200px){
@@ -221,9 +222,8 @@ const AStyles = styled.div`
         margin: 30px 0;
     }
     .group{
-        max-width: 410px;
         display: grid;
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: repeat(2, 48%);
         justify-content: space-between;
         gap: 16px;
       }
@@ -235,13 +235,15 @@ const AStyles = styled.div`
 
 const RegisterForm = () => {
     
-    const [name, setName] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
-    const [welcome, setWelcome] = useState('')
-    const [username, setUsername] = useState('')
+    const [company, setCompany] = useState('')
+    const [role, setRole] = useState('')
+    const [phoneNumber, setPhoneNumber] = useState('')
     const [password, setPassword] = useState('')
     
-    let details = {name, email, welcome, username, password}
+    let details = {firstName, lastName, email, company, phoneNumber, password}
     async function registerUser() {
         let result = await fetch('https://delly-app.herokuapp.com/user/register', {
           method: 'POST',
@@ -265,11 +267,18 @@ const RegisterForm = () => {
             <h1>Create your <br/> <strong>account</strong></h1>
             <p className="log">Enter the information below to create your account.</p>
             <Input 
-                onChange={e => setName(e.target.value)}
-                value={name}
-                name='Fullname'
+                onChange={e => setFirstName(e.target.value)}
+                value={firstName}
+                name='firstName'
                 autoComplete='true'
-                label='Full name'
+                label='First Name'
+            />
+            <Input 
+                onChange={e => setLastName(e.target.value)}
+                value={lastName}
+                name='lastName'
+                autoComplete='true'
+                label='Last Name'
             />
             <Input 
                 onChange={e => setEmail(e.target.value)}
@@ -280,19 +289,27 @@ const RegisterForm = () => {
                 type='email'
             />
             <Input 
-                onChange={e => setWelcome(e.target.value)}
-                value={welcome}
-                name='Welcome'
+                onChange={e => setCompany(e.target.value)}
+                value={company}
+                name='company'
                 autoComplete='true'
-                label='Organization or Company name'
+                label='Company'
+            />
+             <Input 
+                onChange={e => setRole(e.target.value)}
+                value={role}
+                name='companyRole'
+                autoComplete='true'
+                label='Company Role'
             />
             <div className="group">
             <Input 
-                onChange={e => setUsername(e.target.value)}
-                value={username}
-                name='Username'
+                onChange={e => setPhoneNumber(e.target.value)}
+                value={phoneNumber}
+                name='phoneNumber'
                 autoComplete='true'
-                label='Username'
+                label='Phone Number'
+                type='number'
             />
             <Input 
                 onChange={e => setPassword(e.target.value)}

@@ -3,11 +3,7 @@ import styled from 'styled-components';
 import Image from '../images/Cards.svg';
 
 const EasyStyles = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 125px;
+   
     @media (max-width: 319px){
         .image-wrapper{
             width: 100%;
@@ -89,10 +85,14 @@ const EasyStyles = styled.div`
         }
     }
     @media (min-width: 1201px){
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding-top: 125px;
         .image-wrapper{
             display: block;
             text-align: center;
-            /* padding-top: 125px; */
             padding-bottom: 32px;
         }
     }

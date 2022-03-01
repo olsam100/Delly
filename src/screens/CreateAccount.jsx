@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-// import AccountDetails from '../components/AccountDetails';
 import RegisterForm from '../components/RegisterForm';
 import Page from './Page';
 
@@ -18,20 +17,15 @@ const CreateAccountStyles = styled.div`
     @media (min-width: 721px) and (max-width: 1024px){
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 50%);
+        padding-top: 60px;
+        /* grid-template-columns: repeat(2, 50%); */
     }
     @media (min-width: 1025px) and (max-width: 1200px){
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(2, 50%);
+        /* grid-template-columns: repeat(2, 50%); */
     }
     @media (min-width: 1201px){
-        /* display: grid;
-        grid-template-columns: repeat(2, 50%);
-        width: 100%;
-        margin: 0 auto;
-        max-width: 1440px; */
-
         display: flex;
         justify-content: center;
         align-items: center;

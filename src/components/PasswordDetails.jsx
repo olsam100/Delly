@@ -53,6 +53,7 @@ const H = styled.div`
         display: flex;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         flex-wrap: wrap;
         width: 100%;
         height: 100%;
@@ -246,7 +247,7 @@ const H = styled.div`
     }
     @media (min-width: 1201px){
             input {
-              max-width: 382px;
+              /* max-width: 382px; */
               width: 100%;
               font-size: 16px;
               outline: none;
@@ -291,6 +292,9 @@ const H = styled.div`
           transition: .1s ease-out;
           transform-origin: left top;
           pointer-events: none;
+      }
+      form{
+          width: 100%;
       }
       
       input:focus {
@@ -347,12 +351,12 @@ const PasswordDetails = () => {
                     label='Email Address'
                 />
             <Button name="Send Password Instructions" />
-        </form>
         <p className='acc'>
             <Link to="/">
                 <strong>Back to Login</strong> 
             </Link>
         </p>
+        </form>
     </H>
   );
 };
