@@ -14,6 +14,7 @@ const H = styled.div`
         display: flex;
         flex-direction: column;
         padding-top: 40px;
+        width: 100%;
     }
     @media (min-width: 320px) and (max-width: 480px){
         width: 80%;
@@ -23,7 +24,7 @@ const H = styled.div`
         padding-top: 40px;
     }
     @media (min-width: 481px) and (max-width: 720px){
-        width: 80%;
+        width: 60%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
@@ -33,21 +34,24 @@ const H = styled.div`
         padding-top: 60px;
     }
     @media (min-width: 721px) and (max-width: 1024px){
-        width: 80%;
+        width: 50%;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: center;
         height: 100%;
+        flex-wrap: wrap;
+        padding-top: 50px;
     }
     @media (min-width: 1025px) and (max-width: 1200px){
-        width: 80%;
-        margin: 0 auto;
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
-        height: 100%;
+        flex-basis: 100%;
+        flex-grow: 1;
+        /* height: 100%; */
     }
     @media (min-width: 1201px){
         max-width: 400px;
@@ -56,7 +60,7 @@ const H = styled.div`
         flex-direction: column;
         justify-content: center;
         flex-wrap: wrap;
-        width: 100%;
+        /* width: 100%; */
         height: 100%;
     }
     @media (min-width: 320px) and (max-width: 480px){
@@ -319,6 +323,17 @@ const LoginForm = () => {
     const [word, setWord] = useState('')
     // const [errors, catchError] = useState({})
 
+    const onChange = (event) => {
+        const newInputValue = event.currentTarget.value;
+        setEmail(newInputValue);
+    }
+
+    const onPasswordChange = (event) => {
+        const newPasswordValue = event.currentTarget.value;
+        setWord(newPasswordValue);
+    }
+
+
     let details = {mail, word}
     async function loginUser() {
         let result = await fetch('https://delly-app.herokuapp.com/user/login', {
@@ -354,7 +369,7 @@ const LoginForm = () => {
         <p className="log">Log in to your account.</p>
         <form onSubmit={handleSubmit}>
             <Input  
-                onChange={e => setEmail(e.target.value)}
+                onChange={onChange}
                 value={mail}
                 name='Email'
                 autoComplete='true'
@@ -362,7 +377,7 @@ const LoginForm = () => {
             />
             <Input 
                 type='password'  
-                onChange={e => setWord(e.target.value)}
+                onChange={onPasswordChange}
                 value={word}
                 name='Password'
                 autoComplete='current-password'

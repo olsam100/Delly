@@ -2,8 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 // import AccountDetails from '../components/AccountDetails';
 import RegisterForm from '../components/RegisterForm';
-import Easy from '../components/Easy';
-import Footer from '../components/Footer';
+import Page from './Page';
 
 const CreateAccountStyles = styled.div`
    @media (min-width: 320px) and (max-width: 480px){
@@ -27,34 +26,31 @@ const CreateAccountStyles = styled.div`
         grid-template-columns: repeat(2, 50%);
     }
     @media (min-width: 1201px){
-        display: grid;
+        /* display: grid;
         grid-template-columns: repeat(2, 50%);
         width: 100%;
         margin: 0 auto;
-        max-width: 1440px;
+        max-width: 1440px; */
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
     }
 `;
-
-const DivOne = styled.div`
-    background-color: #F8F9FD;
-;
-`;
-
 const DivTwo = styled.div`
     background-color: #ffffff;
 `;
 
 const CreateAccount = () => {
     return (
-        <CreateAccountStyles>
-        <DivOne>
-            <Easy />
-            <Footer />
-        </DivOne>
-        <DivTwo>
-            <RegisterForm />
-        </DivTwo>
-    </CreateAccountStyles>
+        <Page>
+            <CreateAccountStyles>
+                <DivTwo>
+                    <RegisterForm />
+                </DivTwo>
+            </CreateAccountStyles>
+        </Page>
     )
 }
 export default CreateAccount;

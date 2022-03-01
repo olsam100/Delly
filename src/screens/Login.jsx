@@ -1,14 +1,13 @@
 import React from 'react'
 import LoginForm from '../components/LoginForm';
+import Page from './Page';
 import styled from 'styled-components';
-import Footer from '../components/Footer';
-import Easy from '../components/Easy';
-
 
 const LoginStyles = styled.div`
     @media (max-width: 319px){
         display: flex;
         flex-direction: column-reverse;
+        width: 100%;
     }
     @media (min-width: 320px) and (max-width: 480px){
         width: 100%;
@@ -22,47 +21,34 @@ const LoginStyles = styled.div`
     }
     @media (min-width: 721px) and (max-width: 1024px){
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
     }
     @media (min-width: 1025px) and (max-width: 1200px){
-        width: 100%;
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
+        /* width: 100%; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-basis: 100%;
+        /* flex-wrap: nowrap; */
     }
     @media (min-width: 1201px){
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
-        margin: 0 auto;
-        max-width: 1440px;
+        /* height: 100%; */
     }
-`;
-
-const DivOne = styled.div`
-    background-color: #F8F9FD;
-    width: 100%;
-
-`;
-
-const DivTwo = styled.div`
-    background-color: #ffffff;
-    width: 100%;
-
 `;
 
 
 const Login = () => {
     return (
-        <LoginStyles>
-            <DivOne>
-                <Easy />
-                <Footer />
-            </DivOne>
-            <DivTwo>
-                <LoginForm />
-            </DivTwo>
-        </LoginStyles>
+        <Page>
+            <LoginStyles>
+                <div>
+                    <LoginForm />
+                </div>
+            </LoginStyles>
+        </Page>
     )
 }
 export default Login;
