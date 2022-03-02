@@ -239,11 +239,11 @@ const RegisterForm = () => {
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
     const [company, setCompany] = useState('')
-    const [role, setRole] = useState('')
+    const [companyRole, setRole] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [password, setPassword] = useState('')
     
-    let details = {firstName, lastName, email, company, phoneNumber, password}
+    let details = {firstName, lastName, email, company, companyRole, phoneNumber, password}
     async function registerUser() {
         let result = await fetch('https://delly-app.herokuapp.com/user/register', {
           method: 'POST',
@@ -297,8 +297,8 @@ const RegisterForm = () => {
             />
              <Input 
                 onChange={e => setRole(e.target.value)}
-                value={role}
-                name='companyRole'
+                value={companyRole}
+                name='company Role'
                 autoComplete='true'
                 label='Company Role'
             />
