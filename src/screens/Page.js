@@ -30,6 +30,11 @@ const SectionStyles = styled.section`
         .section__left{
             display: none;
         }
+        .section__right{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     }
     @media (min-width: 481px) and (max-width: 720px){
         width: 100%;
