@@ -3,7 +3,9 @@ import styled from 'styled-components';
 import Image from '../images/Cards.svg';
 
 const EasyStyles = styled.div`
-   
+   width: 458px;
+   height: 559px;
+   margin: 0 auto;
     @media (max-width: 319px){
         .image-wrapper{
             width: 100%;
@@ -266,8 +268,6 @@ const EasyStyles = styled.div`
         font-weight: 400;
         font-family: "Graphik";
         padding-top: 16px;
-        padding-left: 120px;
-        padding-right: 120px;
     }
 }
     

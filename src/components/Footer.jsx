@@ -7,6 +7,7 @@ import styled from 'styled-components';
 
 
 const FooterStyles = styled.footer`
+width: 720px;
     @media (max-width: 319px){
         width: 100%;
         margin: 0 auto;

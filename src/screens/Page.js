@@ -4,12 +4,15 @@ import Footer from '../components/Footer';
 import styled from 'styled-components';
 
 const SectionStyles = styled.section`
+    margin: 0 auto;
     .section__left{
             background-color: #F8F9FD;
+            width: 720px;
         }
     .section__right{
         background-color: #ffffff;
         display: flex;
+        width: 720px;
     }
     @media (max-width: 319px){
        .section__left{
@@ -49,27 +52,26 @@ const SectionStyles = styled.section`
         grid-template-columns: repeat(2, 50%);
     }
     @media (min-width: 1201px){
-        display: grid;
-        grid-template-columns: repeat(2, 50%);
-        max-width: 1440px;
-        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        flex-basis: 100%;
     }
-
-    
 `;
 
 const Page = ({children}) => {
     return (
+        
         <SectionStyles>
-            <div className='section__left'>
-                <Easy />
-                <Footer />
-            </div>
-            <div className='section__right'>
-                {children}
-            </div>
+                <div className='section__left'>
+                    <Easy />
+                    <Footer />
+                </div>
+                <div className='section__right'>
+                    {children}
+                </div>
         </SectionStyles>
     );
+   
 };
 
 export default Page;

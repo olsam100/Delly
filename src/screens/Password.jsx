@@ -43,7 +43,6 @@ const Password = () => {
     return (
         <Page>
             <PasswordStyles>
-            
                 <DivTwo>
                     <PasswordDetails 
                     name="Email Address"
