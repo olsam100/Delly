@@ -7,7 +7,6 @@ import styled from 'styled-components';
 
 
 const FooterStyles = styled.footer`
-width: 720px;
     @media (max-width: 319px){
         width: 100%;
         margin: 0 auto;
@@ -55,11 +54,13 @@ width: 720px;
         padding-bottom: 12px;
     }
     @media (min-width: 1201px){
-        width: 100%;
+        /* width: 100%; */
         display: flex;
         flex-direction: column;
         padding-top: 106px;
         padding-bottom: 12px;
+        /* width: 720px; */
+    
     }
     @media (min-width: 320px) and (max-width: 480px){
         p{
