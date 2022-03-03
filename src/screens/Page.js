@@ -27,6 +27,9 @@ const SectionStyles = styled.section`
     @media (min-width: 320px) and (max-width: 480px){
         display: flex;
         flex-direction: column-reverse;
+        .section__left{
+            display: none;
+        }
     }
     @media (min-width: 481px) and (max-width: 720px){
         width: 100%;
@@ -53,6 +56,8 @@ const SectionStyles = styled.section`
     @media (min-width: 1201px){
         display: grid;
         grid-template-columns: 720px 1fr;
+        margin: 0 auto;
+        /* height: 100vh;  */
     }
 `;
 

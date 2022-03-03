@@ -54,12 +54,12 @@ const FooterStyles = styled.footer`
         padding-bottom: 12px;
     }
     @media (min-width: 1201px){
-        /* width: 100%; */
+        width: 100%;
         display: flex;
         flex-direction: column;
         padding-top: 106px;
         padding-bottom: 12px;
-        /* width: 720px; */
+        width: 720px;
     
     }
     @media (min-width: 320px) and (max-width: 480px){
