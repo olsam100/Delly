@@ -110,6 +110,7 @@ const AStyles = styled.div`
         font-size: 14px;
         left: 0;
         top: 50%;
+        font-family: "Graphik";
         transform: translateY(-50%);
         background-color: white;
         color: gray;
@@ -139,6 +140,7 @@ const AStyles = styled.div`
             width: 100%;    
             height: 46px;
             background-color: #ffffff;
+            font-family: "Graphik";
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
@@ -153,6 +155,7 @@ const AStyles = styled.div`
             width: 100%;    
             height: 46px;
             background-color: #ffffff;
+            font-family: "Graphik";
         }
     }
     @media (min-width: 721px) and (max-width: 1024px){
@@ -160,6 +163,7 @@ const AStyles = styled.div`
             font-size: 14px;
             outline: none;
             border: 1px solid #E5EFFF;
+            font-family: "Graphik";
             border-radius: 6px;  
             color: #073763;
             transition: 0.1s ease-out;
@@ -182,6 +186,7 @@ const AStyles = styled.div`
             height: 46px;
             background-color: #ffffff;
             padding-left: 16px;
+            font-family: "Graphik";
         }        
     }
 

@@ -59,7 +59,6 @@ const FooterStyles = styled.footer`
         flex-direction: column;
         padding-top: 106px;
         padding-bottom: 12px;
-        width: 720px;
     
     }
     @media (min-width: 320px) and (max-width: 480px){
@@ -163,10 +162,10 @@ const FooterStyles = styled.footer`
     }
     @media (min-width: 1201px){
         .logos{
+            width: 458px;
+            margin: 0 auto;
             display: flex;
             justify-content: space-between;
-            width: 476px;
-            margin: 0 auto;
             padding-top: 16px;
         }
     }

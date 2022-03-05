@@ -1,17 +1,25 @@
 import React from 'react';
 import Easy from '../components/Easy';
-import Footer from '../components/Footer';
 import styled from 'styled-components';
+import Footer from '../components/Footer';
 
 const SectionStyles = styled.section`
     .section__left{
-            background-color: #F8F9FD;
-        }
+        background-color: #F8F9FD;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .section__right{
         background-color: #ffffff;
         display: flex;
         justify-content: center;
         align-items: center;
+        width: 100%;
+        flex: 1 1 0%;
     }
     @media (max-width: 319px){
        .section__left{
@@ -59,10 +67,12 @@ const SectionStyles = styled.section`
         grid-template-columns: repeat(2, 50%);
     }
     @media (min-width: 1201px){
+        /* height: 100%; */
+        width: 100vw;
         display: grid;
-        grid-template-columns: 720px 1fr;
-        margin: 0 auto;
-        /* height: 100vh;  */
+        grid-template-columns: repeat(2, 1fr);
+        overflow: auto;
+        height: 100vh;
     }
 `;
 

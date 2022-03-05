@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import Image from '../images/Cards.svg';
 
 const EasyStyles = styled.div`
-   width: 458px;
-   height: 559px;
-   margin: 0 auto;
     @media (max-width: 319px){
         .image-wrapper{
             width: 100%;
@@ -91,8 +88,9 @@ const EasyStyles = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        padding-top: 125px;
+        width: 458px;
         .image-wrapper{
+            padding-top: 125px;
             display: block;
             text-align: center;
             padding-bottom: 32px;

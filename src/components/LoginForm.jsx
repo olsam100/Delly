@@ -54,12 +54,11 @@ const H = styled.div`
         /* height: 100%; */
     }
     @media (min-width: 1201px){
-        max-width: 400px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        flex-wrap: wrap;
+        /* justify-content: center; */
+        /* flex-wrap: wrap; */
         /* width: 100%; */
         height: 100%;
     }
@@ -168,6 +167,7 @@ const H = styled.div`
     @media (max-width: 319px){
         input{
             width: 100%;
+            font-family: 'Graphik';
         }
         h1{
             padding-right: 0;
@@ -184,7 +184,8 @@ const H = styled.div`
         background-color: #ffffff;
         padding-left: 16px;
         height: 46px;
-        }
+        font-family: 'Graphik';
+    }
     }
     @media (min-width: 320px) and (max-width: 480px){
         input{
@@ -198,6 +199,7 @@ const H = styled.div`
         background-color: #ffffff;
         padding-left: 16px;
         height: 46px;
+        font-family: 'Graphik';
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
@@ -214,6 +216,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
           }
         
     }
@@ -231,6 +234,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
           }
     }
     @media (min-width: 1025px) and (max-width: 1200px){
@@ -247,6 +251,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
         }
     }
     @media (min-width: 1201px){
@@ -262,6 +267,7 @@ const H = styled.div`
               background-color: #ffffff;
               padding-left: 16px;
               height: 46px;
+              font-family: 'Graphik';
         }
     }  
     .acc{
@@ -277,6 +283,7 @@ const H = styled.div`
         height: 48px;
         margin-top: 16px;
         display: flex;
+        max-width: 400px;
     }
     .field{
         /* margin-bottom: 16px; */
@@ -313,6 +320,9 @@ const H = styled.div`
           top: 0;
           transform: translateY(-50%) scale(.9);
       }
+      button {
+          max-width: 400px;
+      }
 `;
 
 
@@ -321,7 +331,6 @@ const LoginForm = () => {
     
     const [mail, setEmail] = useState('')
     const [word, setWord] = useState('')
-    // const [errors, catchError] = useState({})
 
     const onChange = (event) => {
         const newInputValue = event.currentTarget.value;
