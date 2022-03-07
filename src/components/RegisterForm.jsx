@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from './Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Input from './Input';
 
 const AStyles = styled.div`
@@ -239,7 +239,7 @@ const AStyles = styled.div`
 `;
 
 const RegisterForm = () => {
-    
+    const navigate = useNavigate();
     const [firstName, setFirstName] = useState('')
     const [lastName, setLastName] = useState('')
     const [email, setEmail] = useState('')
@@ -266,7 +266,8 @@ const RegisterForm = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await registerUser(details)
+            await registerUser(details);
+            navigate('/account-success')
         } catch (ex) {
             if(ex.response && ex.response.status === 400) {
                 const error = {errors}

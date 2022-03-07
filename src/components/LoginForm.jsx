@@ -52,12 +52,13 @@ const H = styled.div`
         /* height: 100%; */
     }
     @media (min-width: 1201px){
+        max-width: 400px;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        /* justify-content: center; */
-        /* flex-wrap: wrap; */
-        /* width: 100%; */
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
         height: 100%;
     }
     @media (min-width: 320px) and (max-width: 480px){
@@ -320,6 +321,7 @@ const H = styled.div`
       }
       button {
           max-width: 400px;
+          cursor: pointer;
       }
 `;
 
