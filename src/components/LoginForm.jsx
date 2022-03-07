@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
@@ -325,7 +325,8 @@ const H = styled.div`
 
 
 
-const LoginForm = ({ history }) => {
+const LoginForm = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setWord] = useState('')
     const [errors, setErrors] = useState('')
@@ -359,7 +360,8 @@ const LoginForm = ({ history }) => {
         try {
             const { data: jwt } = await loginUser(details)
             localStorage.setItem('token', jwt);
-            history.push('/') //here is the push method
+            navigate('/');
+            // history.push('/') //here is the push method
         } catch (ex) {
             if(ex.response && ex.response.status === 400){
                 const error = {errors}

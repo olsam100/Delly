@@ -1,6 +1,6 @@
 // import { validate } from 'joi-browser';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from './Button';
 import Input from './Input';
 import styled from 'styled-components';
@@ -324,6 +324,7 @@ const H = styled.div`
 
 const PasswordDetails = () => {
     const [email, setEmail] = useState('')
+    const navigate = useNavigate();
 
     let detail = {email}
     async function resetUser() {
@@ -342,6 +343,7 @@ const PasswordDetails = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await resetUser(email);
+        navigate('/reset-password');
     }
     
   return (
