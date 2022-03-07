@@ -1,9 +1,11 @@
+// import axios from 'axios';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
 // import { login } from '../services/authService'
+// import Joi from 'joi-browser';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -52,12 +54,21 @@ const H = styled.div`
         /* height: 100%; */
     }
     @media (min-width: 1201px){
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
+        /* margin: 0 auto; */
+        /* display: flex; */
+        /* flex-direction: column; */
         /* justify-content: center; */
         /* flex-wrap: wrap; */
         /* width: 100%; */
+        /* height: 100%; */
+        max-width: 400px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        width: 100%;
         height: 100%;
     }
     @media (min-width: 320px) and (max-width: 480px){
@@ -305,6 +316,9 @@ const H = styled.div`
           transform-origin: left top;
           pointer-events: none;
       }
+      form{
+          width: 100%;
+      }
       
       input:focus {
           border-color: #7F92A4;  
@@ -325,10 +339,12 @@ const H = styled.div`
 
 
 
-const LoginForm = ({ history }) => {
+const ResetForm = () => {
+    
+    
     const [email, setEmail] = useState('')
-    const [password, setWord] = useState('')
-    const [errors, setErrors] = useState('')
+    const [password, setPassword] = useState('')
+    const [resetPassword, setResetPassword] = useState('')
 
     const onChange = (event) => {
         const newInputValue = event.currentTarget.value;
@@ -337,11 +353,16 @@ const LoginForm = ({ history }) => {
 
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
-        setWord(newPasswordValue);
+        setPassword(newPasswordValue);
     }
 
-    let details = {email, password}
-    async function loginUser() {
+    const onResetPasswordChange = (event) => {
+        const newPasswordValue = event.currentTarget.value;
+        setResetPassword(newPasswordValue);
+    }
+
+    let details = { email, password, resetPassword };
+    async function reset() {
         let result = await fetch('https://delly-app.herokuapp.com/user/login', {
           method: 'POST',
           headers: {
@@ -353,26 +374,15 @@ const LoginForm = ({ history }) => {
         result = await result.json()
         localStorage.setItem('user-info', JSON.stringify(result))
     }
- 
-    const handleSubmit = async ( e ) => {
+    
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        try {
-            const { data: jwt } = await loginUser(details)
-            localStorage.setItem('token', jwt);
-            history.push('/') //here is the push method
-        } catch (ex) {
-            if(ex.response && ex.response.status === 400){
-                const error = {errors}
-                error.email = ex.response.data;
-                setErrors({ errors })
-            }
-        }
+        await reset (details)
     }
      
   return (
     <H>
-        <h1>Welcome back to <strong>Delly</strong></h1>
-        <p className="log">Log in to your account.</p>
+        <h1>Reset your <strong>Password</strong></h1>
         <form onSubmit={handleSubmit}>
             <Input  
                 onChange={onChange}
@@ -385,19 +395,19 @@ const LoginForm = ({ history }) => {
                 type='password'  
                 onChange={onPasswordChange}
                 value={password}
-                name='Password'
+                name='New Password'
                 autoComplete='current-password'
-                label='Password'
+                label='New Password'
+            />
+            <Input 
+                type='password'  
+                onChange={onResetPasswordChange}
+                value={resetPassword}
+                name='Confirm Password'
+                label='Confirm Password'
             />
            
-            <p className='acc'>
-                <Link to="/password">
-                    <strong>Forgot Password?
-                    </strong> 
-                </Link>
-            </p>
-
-            <Button name="Log In" type="submit" post/>
+            <Button name="Reset Password" type="submit" post/>
             <p className='acc'>
                 <Link to="/create-account">
                     Don't have an account? 
@@ -409,6 +419,6 @@ const LoginForm = ({ history }) => {
   );
 };
 
-export default LoginForm;
+export default ResetForm;
  
 

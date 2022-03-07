@@ -1,9 +1,11 @@
 // import { validate } from 'joi-browser';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
+import styled from 'styled-components';
+import ResetForm from './ResetForm';
+
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -184,16 +186,17 @@ const H = styled.div`
     }
     @media (min-width: 320px) and (max-width: 480px){
         input{
-        width: 100%;
-        font-size: 16px;
-        outline: none;
-        border: 1px solid #E5EFFF;
-        border-radius: 6px;  
-        color: #073763;
-        transition: 0.1s ease-out;
-        background-color: #ffffff;
-        padding-left: 16px;
-        height: 46px;
+            width: 100%;
+            font-size: 16px;
+            outline: none;
+            border: 1px solid #E5EFFF;
+            border-radius: 6px;  
+            color: #073763;
+            transition: 0.1s ease-out;
+            background-color: #ffffff;
+            padding-left: 16px;
+            height: 46px;
+            font-family: 'Graphik';
         }
     }
     @media (min-width: 481px) and (max-width: 720px){
@@ -210,6 +213,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
           }
         
     }
@@ -227,6 +231,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
           }
     }
     @media (min-width: 1025px) and (max-width: 1200px){
@@ -243,6 +248,7 @@ const H = styled.div`
               padding-top: 16px;
               padding-bottom: 16px;
               padding-left: 16px;
+              font-family: 'Graphik';
         }
     }
     @media (min-width: 1201px){
@@ -258,6 +264,7 @@ const H = styled.div`
               background-color: #ffffff;
               padding-left: 16px;
               height: 46px;
+              font-family: 'Graphik';
         }
     }  
     .acc{
@@ -317,23 +324,24 @@ const H = styled.div`
 
 const PasswordDetails = () => {
     const [email, setEmail] = useState('')
-    // const [errors, setError] = useState({})
 
-    // const handleError = () => setError(errors);
-
-    const validate = () => {
-        const errors = {}
-        if(email.trim() === '' ) 
-            errors.email = 'Email is required'
-        return { email: 'Email is required' };
+    let detail = {email}
+    async function resetUser() {
+        let result = await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(detail)
+        })
+        result = await result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
     }
 
-    const handleSubmit = e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        const errors = validate();
-        // handleError({errors});
-        if(errors) return;
-        // console.log('I am submitted');
+        await resetUser(email);
     }
     
   return (
@@ -341,7 +349,7 @@ const PasswordDetails = () => {
         <h1>Forgot your <strong>Password</strong></h1>
         <p className="log">Enter your email address and we will send you instructions to reset your password.</p>
         <p className="log"> For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} onClick={<ResetForm />}>
                 <Input 
                     type="email" 
                     value={email}
@@ -350,6 +358,8 @@ const PasswordDetails = () => {
                     autoComplete='true'
                     label='Email Address'
                 />
+            {/* <Link to='/reset-password'>
+            </Link> */}
             <Button name="Send Password Instructions" />
         <p className='acc'>
             <Link to="/">

@@ -75,6 +75,7 @@ const EasyStyles = styled.div`
         }
         img{
             max-width: 90%;
+            object-fit: contain;
         }
     }
     @media (min-width: 1025px) and (max-width: 1200px){
@@ -94,6 +95,7 @@ const EasyStyles = styled.div`
             display: block;
             text-align: center;
             padding-bottom: 32px;
+            object-fit: contain;
         }
     }
 

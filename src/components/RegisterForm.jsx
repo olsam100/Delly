@@ -247,6 +247,7 @@ const RegisterForm = () => {
     const [companyRole, setRole] = useState('')
     const [phoneNumber, setPhoneNumber] = useState('')
     const [password, setPassword] = useState('')
+    const [errors, setErrors] = useState('')
     
     let details = {firstName, lastName, email, company, companyRole, phoneNumber, password}
     async function registerUser() {
@@ -264,7 +265,15 @@ const RegisterForm = () => {
    
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await registerUser(details)
+        try {
+            await registerUser(details)
+        } catch (ex) {
+            if(ex.response && ex.response.status === 400) {
+                const error = {errors}
+                error.email = ex.response.data;
+                setErrors({ errors })
+            }
+        }
     }
   return (
     <AStyles>
