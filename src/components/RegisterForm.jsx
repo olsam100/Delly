@@ -235,7 +235,7 @@ const AStyles = styled.div`
       .small{
           /* width: 176px; */
           height: 44px;
-      }
+      } 
 `;
 
 const RegisterForm = () => {

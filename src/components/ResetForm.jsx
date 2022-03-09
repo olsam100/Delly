@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
@@ -339,17 +339,12 @@ const H = styled.div`
 
 
 
-const ResetForm = () => {
+const ResetForm = (props) => {
+    const navigate = useNavigate();
     
-    
-    const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [resetPassword, setResetPassword] = useState('')
-
-    const onChange = (event) => {
-        const newInputValue = event.currentTarget.value;
-        setEmail(newInputValue);
-    }
+    const [redirect, setRedirect] = useState(false)
 
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
@@ -361,36 +356,52 @@ const ResetForm = () => {
         setResetPassword(newPasswordValue);
     }
 
-    let details = { email, password, resetPassword };
-    async function reset() {
-        let result = await fetch('https://delly-app.herokuapp.com/user/login', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            "Accept": "application/json"
-          },
-          body: JSON.stringify(details)
-        })
-        result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
-    }
+    // let details = { password, resetPassword, token };
+    // async function reset() {
+    //     let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
+    //     let result = await fetch(baseUrl, {
+    //       method: 'POST',
+    //       headers: {
+    //         'Content-Type': 'application/json',
+    //         "Accept": "application/json"
+    //       },
+    //       body: JSON.stringify(details)
+    //     body: JSON.stringify({
+    //         token: props.match.params.token,
+    //         password,
+    //         resetPassword
+    //     })
+    //     })
+    //     result = await result.json()
+    //     localStorage.setItem('user-info', JSON.stringify(result))
+    // }
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await reset (details)
+        await fetch('https://delly-app.herokuapp.com/user/password/reset', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                "Accept": "application/json"
+          },
+          body: JSON.stringify({
+                    token: props.match.params.token,
+                    password,
+                    resetPassword
+        })
+        })
+        setRedirect(true)
+    }
+    
+    if(redirect){
+        navigate('/')
     }
      
   return (
     <H>
         <h1>Reset your <strong>Password</strong></h1>
         <form onSubmit={handleSubmit}>
-            <Input  
-                onChange={onChange}
-                value={email}
-                name='Email'
-                autoComplete='true'
-                label='Email Address'
-            />
+            
             <Input 
                 type='password'  
                 onChange={onPasswordChange}

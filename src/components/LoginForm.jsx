@@ -354,7 +354,8 @@ const LoginForm = () => {
           body: JSON.stringify(details)
         })
         result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
+        localStorage.setItem('token', JSON.stringify(result))
+        // localStorage.setItem('user-info', JSON.stringify(result))
     }
  
     const handleSubmit = async ( e ) => {

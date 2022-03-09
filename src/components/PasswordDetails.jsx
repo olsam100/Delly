@@ -324,10 +324,10 @@ const H = styled.div`
 
 const PasswordDetails = () => {
     const [email, setEmail] = useState('')
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     let detail = {email}
-    async function resetUser() {
+    async function forgotPassword() {
         let result = await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
           method: 'POST',
           headers: {
@@ -342,8 +342,8 @@ const PasswordDetails = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await resetUser(email);
-        navigate('/reset-password');
+        await forgotPassword(email);
+        // navigate('/reset-password'); 
     }
     
   return (
