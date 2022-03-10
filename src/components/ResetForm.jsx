@@ -337,7 +337,8 @@ const ResetForm = (props) => {
     
     const [password, setPassword] = useState('')
     const [resetPassword, setResetPassword] = useState('')
-    const [redirect, setRedirect] = useState(false)
+    const [errors, setErrors] = useState('')
+    // const [redirect, setRedirect] = useState(false)
 
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
@@ -348,35 +349,36 @@ const ResetForm = (props) => {
         const newPasswordValue = event.currentTarget.value;
         setResetPassword(newPasswordValue);
     }
-
-    // const key = props.match.params.token
-    // let details = { password, reset_password: resetPassword, key };
+    let details = {
+        token: props.match.params.token,
+        password,
+        password_confirm: resetPassword
+    }
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
-         await fetch(baseUrl, {
+         let result = await fetch(baseUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             "Accept": "application/json"
           },
-          body: JSON.stringify({
-              token: props.match.params.token,
-              password,
-              password_confirm: resetPassword
-          })
-        
+          body: JSON.stringify(details)
         })
-        // result = await result.json()
-        // localStorage.setItem('user-info', JSON.stringify(result))
+        result = await result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        reset();
-        setRedirect(true)
-    }
-    
-    if(redirect){
-        navigate('/login')
+        try {
+            await reset(details);
+            navigate('/login')
+        } catch (ex) {
+            if(ex.response && ex.response.status === 400) {
+                const error = {errors}
+                error.email = ex.response.data;
+                setErrors({ errors })
+            }
+        }
     }
      
   return (
