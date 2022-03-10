@@ -349,40 +349,25 @@ const ResetForm = (props) => {
         setResetPassword(newPasswordValue);
     }
 
-    // let details = { password, resetPassword, token };
-    // async function reset() {
-    //     let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
-    //     let result = await fetch(baseUrl, {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //         "Accept": "application/json"
-    //       },
-    //       body: JSON.stringify(details)
-    //     body: JSON.stringify({
-    //         token: props.match.params.token,
-    //         password,
-    //         resetPassword
-    //     })
-    //     })
-    //     result = await result.json()
-    //     localStorage.setItem('user-info', JSON.stringify(result))
-    // }
-    
+    const key = props.match.params.token
+    let details = { password, resetPassword, key };
+    async function reset() {
+        let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
+        let result = await fetch(baseUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(details)
+        
+        })
+        result = await result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
+    }
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await fetch('https://delly-app.herokuapp.com/user/password/reset', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                "Accept": "application/json"
-          },
-            body: JSON.stringify({
-                    token: props.match.params.token,
-                    password,
-                    resetPassword
-            })
-        })
+        reset();
         setRedirect(true)
     }
     
