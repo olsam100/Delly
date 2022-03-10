@@ -40,12 +40,12 @@ const LoginStyles = styled.div`
 `;
 
 
-const ResetPassword = () => {
+const ResetPassword = (props) => {
     return (
         <Page>
             <LoginStyles>
                 <div>
-                    <ResetForm />
+                    <ResetForm {...props}/>
                 </div>
             </LoginStyles>
         </Page>

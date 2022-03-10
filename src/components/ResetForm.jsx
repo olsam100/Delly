@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
 // import { Link, Navigate } from 'react-router-dom';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
@@ -339,6 +339,10 @@ const ResetForm = (props) => {
     const [errors, setErrors] = useState('')
     const [redirect, setRedirect] = useState(false)
 
+    let [searchParams, setSearchParams] = useSearchParams();
+    let token = searchParams.get("token");
+
+    console.log(searchParams, token);
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
         setPassword(newPasswordValue);
@@ -348,12 +352,13 @@ const ResetForm = (props) => {
         const newPasswordValue = event.currentTarget.value;
         setResetPassword(newPasswordValue);
     }
+    
     let details = {
-        token: props.match.params.token,
+        token,
         password,
-        password_confirm: resetPassword
+        password_confirm: resetPassword,
     }
-    console.log(details.token);
+    console.log(props);
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
          let result = await fetch(baseUrl, {
@@ -365,9 +370,10 @@ const ResetForm = (props) => {
           body: JSON.stringify(details)
         })
         result = await result.json()
-        localStorage.setItem('result', JSON.stringify(result))
-        // localStorage.setItem('user-info', JSON.stringify(result))
+        localStorage.setItem('user-info', JSON.stringify(result));
+        console.log(result)
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -389,7 +395,9 @@ const ResetForm = (props) => {
   return (
     <H>
         <h1>Reset your <strong>Password</strong></h1>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit((formData) => {
+            // formData.
+        })}>
             
             <Input 
                 type='password'  
