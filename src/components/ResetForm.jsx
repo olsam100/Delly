@@ -353,6 +353,7 @@ const ResetForm = (props) => {
         password,
         password_confirm: resetPassword
     }
+    console.log(details.token);
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
          let result = await fetch(baseUrl, {
