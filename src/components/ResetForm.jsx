@@ -371,7 +371,7 @@ const ResetForm = (props) => {
         e.preventDefault();
         try {
             await reset(details);
-            navigate('/login')
+            navigate('/')
         } catch (ex) {
             if(ex.response && ex.response.status === 400) {
                 const error = {errors}

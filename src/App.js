@@ -26,7 +26,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={ <Login /> } exact />
         <Route path="/password" element={ <Password /> } exact/>
-        <Route path="/reset-password/:token?=" element={ <ResetPassword /> } exact/>
+        <Route path="/reset-password/:token" element={ <ResetPassword /> } exact/>
         <Route path="/create-account" element={ <CreateAccount /> } exact/>
         <Route path="/account-success" element={ <AccountSuccess /> } exact/>
        
