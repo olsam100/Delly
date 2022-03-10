@@ -54,13 +54,6 @@ const H = styled.div`
         /* height: 100%; */
     }
     @media (min-width: 1201px){
-        /* margin: 0 auto; */
-        /* display: flex; */
-        /* flex-direction: column; */
-        /* justify-content: center; */
-        /* flex-wrap: wrap; */
-        /* width: 100%; */
-        /* height: 100%; */
         max-width: 400px;
         margin: 0 auto;
         display: flex;
@@ -384,11 +377,11 @@ const ResetForm = (props) => {
                 'Content-Type': 'application/json',
                 "Accept": "application/json"
           },
-          body: JSON.stringify({
+            body: JSON.stringify({
                     token: props.match.params.token,
                     password,
                     resetPassword
-        })
+            })
         })
         setRedirect(true)
     }

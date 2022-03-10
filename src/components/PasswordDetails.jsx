@@ -1,6 +1,6 @@
 // import { validate } from 'joi-browser';
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Button from './Button';
 import Input from './Input';
 import styled from 'styled-components';
