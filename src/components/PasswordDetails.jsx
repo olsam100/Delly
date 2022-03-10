@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import Button from './Button';
 import Input from './Input';
 import styled from 'styled-components';
-import ResetForm from './ResetForm';
 
 
 const H = styled.div`
@@ -349,7 +348,7 @@ const PasswordDetails = () => {
         <h1>Forgot your <strong>Password</strong></h1>
         <p className="log">Enter your email address and we will send you instructions to reset your password.</p>
         <p className="log"> For security reasons, we do NOT store your password. So rest assured that we will never send your password via email.</p>
-        <form onSubmit={handleSubmit} onClick={<ResetForm />}>
+        <form onSubmit={handleSubmit} >
                 <Input 
                     type="email" 
                     value={email}

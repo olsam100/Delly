@@ -1,11 +1,10 @@
 // import axios from 'axios';
 import React, { useState } from 'react';
+// import { Link, Navigate } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
 import Input from './Input';
-// import { login } from '../services/authService'
-// import Joi from 'joi-browser';
 
 const H = styled.div`
     @media (max-width: 319px){
@@ -338,7 +337,7 @@ const ResetForm = (props) => {
     const [password, setPassword] = useState('')
     const [resetPassword, setResetPassword] = useState('')
     const [errors, setErrors] = useState('')
-    // const [redirect, setRedirect] = useState(false)
+    const [redirect, setRedirect] = useState(false)
 
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
@@ -371,7 +370,7 @@ const ResetForm = (props) => {
         e.preventDefault();
         try {
             await reset(details);
-            navigate('/')
+            // navigate('/')
         } catch (ex) {
             if(ex.response && ex.response.status === 400) {
                 const error = {errors}
@@ -379,6 +378,10 @@ const ResetForm = (props) => {
                 setErrors({ errors })
             }
         }
+        setRedirect(true)
+    }
+    if(redirect){
+        navigate('/');
     }
      
   return (
