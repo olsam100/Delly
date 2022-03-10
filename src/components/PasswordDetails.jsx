@@ -324,11 +324,10 @@ const H = styled.div`
 
 const PasswordDetails = () => {
     const [email, setEmail] = useState('')
-    // const navigate = useNavigate();
 
     let detail = {email}
     async function forgotPassword() {
-         await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
+          let result = await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -336,8 +335,8 @@ const PasswordDetails = () => {
           },
           body: JSON.stringify(detail)
         })
-        // result = await result.json()
-        // localStorage.setItem('user-info', JSON.stringify(result))
+        result = await result.json()
+        localStorage.setItem('user-info', JSON.stringify(result))
     }
 
     const handleSubmit = async (e) => {
@@ -359,8 +358,6 @@ const PasswordDetails = () => {
                     autoComplete='true'
                     label='Email Address'
                 />
-            {/* <Link to='/reset-password'>
-            </Link> */}
             <Button name="Send Password Instructions" />
         <p className='acc'>
             <Link to="/">
