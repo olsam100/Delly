@@ -365,7 +365,8 @@ const ResetForm = (props) => {
           body: JSON.stringify(details)
         })
         result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
+        localStorage.getItem('user-info', JSON.stringify(result))
+        // localStorage.setItem('user-info', JSON.stringify(result))
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
