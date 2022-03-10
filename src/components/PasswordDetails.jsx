@@ -328,7 +328,7 @@ const PasswordDetails = () => {
 
     let detail = {email}
     async function forgotPassword() {
-        let result = await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
+         await fetch('https://delly-app.herokuapp.com/user/forgot-password', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -336,14 +336,13 @@ const PasswordDetails = () => {
           },
           body: JSON.stringify(detail)
         })
-        result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
+        // result = await result.json()
+        // localStorage.setItem('user-info', JSON.stringify(result))
     }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        await forgotPassword(email);
-        // navigate('/reset-password'); 
+        await forgotPassword(email); 
     }
     
   return (

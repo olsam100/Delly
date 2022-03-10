@@ -349,21 +349,25 @@ const ResetForm = (props) => {
         setResetPassword(newPasswordValue);
     }
 
-    const key = props.match.params.token
-    let details = { password, resetPassword, key };
+    // const key = props.match.params.token
+    // let details = { password, reset_password: resetPassword, key };
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
-        let result = await fetch(baseUrl, {
+         await fetch(baseUrl, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             "Accept": "application/json"
           },
-          body: JSON.stringify(details)
+          body: JSON.stringify({
+              token: props.match.params.token,
+              password,
+              password_confirm: resetPassword
+          })
         
         })
-        result = await result.json()
-        localStorage.setItem('user-info', JSON.stringify(result))
+        // result = await result.json()
+        // localStorage.setItem('user-info', JSON.stringify(result))
     }
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -372,7 +376,7 @@ const ResetForm = (props) => {
     }
     
     if(redirect){
-        navigate('/')
+        navigate('/login')
     }
      
   return (
