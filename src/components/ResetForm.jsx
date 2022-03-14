@@ -1,6 +1,4 @@
-// import axios from 'axios';
 import React, { useState } from 'react';
-// import { Link, Navigate } from 'react-router-dom';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import Button from './Button';
@@ -358,7 +356,7 @@ const ResetForm = (props) => {
         password,
         password_confirm: resetPassword,
     }
-    console.log(props);
+    // console.log(props);
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
          let result = await fetch(baseUrl, {
@@ -395,10 +393,7 @@ const ResetForm = (props) => {
   return (
     <H>
         <h1>Reset your <strong>Password</strong></h1>
-        <form onSubmit={handleSubmit((formData) => {
-            // formData.
-        })}>
-            
+        <form onSubmit={handleSubmit}>
             <Input 
                 type='password'  
                 onChange={onPasswordChange}
