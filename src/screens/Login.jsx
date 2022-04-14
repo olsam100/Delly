@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LoginForm from '../components/LoginForm';
 import Page from './Page';
 import styled from 'styled-components';
@@ -41,6 +41,16 @@ const LoginStyles = styled.div`
 
 
 const Login = () => {
+   
+
+        // const LoginUser = (details) => {
+        //     console.log(details)
+        // }
+
+        // const LogoutUser = () => {
+        //     console.log();
+        // }
+
     return (
         <Page>
             <LoginStyles>

@@ -327,10 +327,10 @@ const H = styled.div`
 
 
 
-const LoginForm = () => {
+const LoginForm = ({Login, error}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
-    const [password, setWord] = useState('')
+    const [password, setPassword] = useState('')
     const [errors, setErrors] = useState('')
 
     const onChange = (event) => {
@@ -340,8 +340,9 @@ const LoginForm = () => {
 
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
-        setWord(newPasswordValue);
+        setPassword(newPasswordValue);
     }
+    
 
     let details = {email, password}
     async function loginUser() {
@@ -364,7 +365,6 @@ const LoginForm = () => {
             const { data: jwt } = await loginUser(details)
             localStorage.setItem('token', jwt);
             navigate('/');
-            // history.push('/') //here is the push method
         } catch (ex) {
             if(ex.response && ex.response.status === 400){
                 const error = {errors}
@@ -376,9 +376,9 @@ const LoginForm = () => {
      
   return (
     <H>
-        <h1>Welcome back to <strong>Delly</strong></h1>
-        <p className="log">Log in to your account.</p>
         <form onSubmit={handleSubmit}>
+            <h1>Welcome back to <strong>Delly</strong></h1>
+            <p className="log">Log in to your account.</p>
             <Input  
                 onChange={onChange}
                 value={email}

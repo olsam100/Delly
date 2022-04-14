@@ -250,6 +250,15 @@ const RegisterForm = () => {
     const [errors, setErrors] = useState('')
     
     let details = {firstName, lastName, email, company, companyRole, phoneNumber, password}
+    // function for validating email
+    // function ValidateEmail(mail) {
+    //     let emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    //     if (emailRegex.test(myForm.emailAddr.value)){
+    //     return (true)
+    // }
+    //     alert("You have entered an invalid email address!")
+    //     return (false)
+    // }
     async function registerUser() {
         let result = await fetch('https://delly-app.herokuapp.com/user/register', {
           method: 'POST',
@@ -285,21 +294,21 @@ const RegisterForm = () => {
                 onChange={e => setFirstName(e.target.value)}
                 value={firstName}
                 name='firstName'
-                autoComplete='true'
+                autoComplete='off'
                 label='First Name'
             />
             <Input 
                 onChange={e => setLastName(e.target.value)}
                 value={lastName}
                 name='lastName'
-                autoComplete='true'
+                autoComplete='off'
                 label='Last Name'
             />
             <Input 
                 onChange={e => setEmail(e.target.value)}
                 value={email}
                 name='Email Address'
-                autoComplete='true'
+                autoComplete='off'
                 label='Email Address'
                 type='email'
             />
@@ -307,14 +316,14 @@ const RegisterForm = () => {
                 onChange={e => setCompany(e.target.value)}
                 value={company}
                 name='company'
-                autoComplete='true'
+                autoComplete='off'
                 label='Company'
             />
              <Input 
                 onChange={e => setRole(e.target.value)}
                 value={companyRole}
                 name='company Role'
-                autoComplete='true'
+                autoComplete='off'
                 label='Company Role'
             />
             <div className="group">
@@ -322,7 +331,7 @@ const RegisterForm = () => {
                 onChange={e => setPhoneNumber(e.target.value)}
                 value={phoneNumber}
                 name='phoneNumber'
-                autoComplete='true'
+                autoComplete='off'
                 label='Phone Number'
                 type='number'
             />
@@ -330,7 +339,7 @@ const RegisterForm = () => {
                 onChange={e => setPassword(e.target.value)}
                 value={password}
                 name='Password'
-                autoComplete='new-password'
+                autoComplete='off'
                 label='Password'
                 type='password'
             />

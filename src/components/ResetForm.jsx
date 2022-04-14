@@ -81,6 +81,20 @@ const H = styled.div`
             color: #526475;
             font-family: "Graphik";
         }
+        .validation {
+            display: flex;
+            width: 100%;
+            margin: 0;
+            justify-content: flex-start;
+        }
+        .validation__message{
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 40px;
+        color: #ff0000;
+        font-family: "Graphik";
+        }
     }
 
     strong{
@@ -334,13 +348,14 @@ const ResetForm = (props) => {
     
     const [password, setPassword] = useState('')
     const [resetPassword, setResetPassword] = useState('')
-    const [errors, setErrors] = useState('')
+    const [errors, setErrors] = useState({})
     const [redirect, setRedirect] = useState(false)
 
     let [searchParams, setSearchParams] = useSearchParams();
     let token = searchParams.get("token");
 
     console.log(searchParams, token);
+
     const onPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
         setPassword(newPasswordValue);
@@ -349,14 +364,24 @@ const ResetForm = (props) => {
     const onResetPasswordChange = (event) => {
         const newPasswordValue = event.currentTarget.value;
         setResetPassword(newPasswordValue);
+        setErrors(checkValidation(password, resetPassword));
     }
     
+    // const regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+    // const regexPassword =  /(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})/;
+    const checkValidation = (values) => {
+       
+        const errors = {}
+        if(!values.password){
+            errors.password = 'Password is required'
+        }
+    };
     let details = {
         token,
         password,
         password_confirm: resetPassword,
     }
-    // console.log(props);
+    
     async function reset() {
         let baseUrl = 'https://delly-app.herokuapp.com/user/password/reset'
          let result = await fetch(baseUrl, {
@@ -392,8 +417,11 @@ const ResetForm = (props) => {
      
   return (
     <H>
-        <h1>Reset your <strong>Password</strong></h1>
+        <div className="validation">
+            <h3 className='validation__message'>{errors}</h3>
+        </div>
         <form onSubmit={handleSubmit}>
+        <h1>Reset your <strong>Password</strong></h1>
             <Input 
                 type='password'  
                 onChange={onPasswordChange}
@@ -410,7 +438,7 @@ const ResetForm = (props) => {
                 label='Confirm Password'
             />
            
-            <Button name="Reset Password" type="submit" post/>
+            <Button name="Reset Password" type="submit" post />
             <p className='acc'>
                 <Link to="/create-account">
                     Don't have an account? 
