@@ -325,14 +325,13 @@ const H = styled.div`
       }
 `;
 
-
-
 const LoginForm = ({Login, error}) => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [errors, setErrors] = useState('')
 
+    
     const onChange = (event) => {
         const newInputValue = event.currentTarget.value;
         setEmail(newInputValue);
@@ -356,22 +355,38 @@ const LoginForm = ({Login, error}) => {
         })
         result = await result.json()
         localStorage.setItem('token', JSON.stringify(result))
-        // localStorage.setItem('user-info', JSON.stringify(result))
+        localStorage.setItem('user-info', JSON.stringify(result))
     }
  
-    const handleSubmit = async ( e ) => {
-        e.preventDefault();
+    // const handleSubmit = async ( e ) => {
+    //     e.preventDefault();
+    //     try {
+    //         const { data: jwt } = await loginUser(details)
+    //         localStorage.setItem('token', jwt);
+    //         navigate('/');
+    //     } catch (ex) {
+    //         if(ex.response && ex.response.status === 400){
+    //             const error = {errors}
+    //             error.email = ex.response.data;
+    //             setErrors({ errors })
+    //         }
+    //     }
+    // }
+
+    const getSubmit = async (req, res) => {
         try {
-            const { data: jwt } = await loginUser(details)
-            localStorage.setItem('token', jwt);
+            const {id: tokenID} = req.params;
+            const getID = await loginUser.findOne({_id: tokenID})
+            localStorage.setItem('token', getID)
             navigate('/');
-        } catch (ex) {
-            if(ex.response && ex.response.status === 400){
-                const error = {errors}
-                error.email = ex.response.data;
-                setErrors({ errors })
-            }
+        } catch (error) {
+            res.status(500).JSON({msg: error})
         }
+    }
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        getSubmit();
     }
      
   return (
